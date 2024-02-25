@@ -18,4 +18,7 @@ include_directories(
         ${SDL2_INCLUDE_DIR}
         include
 )
+
+file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
+
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES})
