@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(${PROJECT_NAME} src/main.cpp
         include/Game.h
         src/Game.cpp
+        include/TextureManager.h
+        src/TextureManager.cpp
 )
 
 # --- SDL2 SETUP ---
@@ -14,8 +16,14 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 set(SDL2_PATH "SDL2/x86_64-w64-mingw32")
 
 find_package(SDL2 REQUIRED)
+
+# Locate SDL2 and SDL_image libraries
+find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
+
 include_directories(
         ${SDL2_INCLUDE_DIR}
+        ${SDL2_IMAGE_INCLUDE_DIRS}
         include
 )
 
