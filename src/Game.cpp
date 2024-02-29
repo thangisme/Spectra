@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Game.h"
 
+Game* Game::s_pInstance = 0;
+
 Game::Game() {}
 Game::~Game() {}
 

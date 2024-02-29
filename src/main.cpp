@@ -1,19 +1,17 @@
 #include <SDL.h>
 #include "Game.h"
 
-Game* g_game = nullptr;
 
 int main(int argc, char* args[]) {
-    g_game = new Game();
-    g_game -> init ("Platformer", 100, 100, 1280, 720, 0);
+    if (!Game::Instance() -> init ("Platformer", 100, 100, 1280, 720, 0)) return 1;
 
-    while (g_game -> running()) {
-        g_game -> handleEvents();
-        g_game -> update();
-        g_game -> render();
+    while (Game::Instance() -> running()) {
+        Game::Instance() -> handleEvents();
+        Game::Instance() -> update();
+        Game::Instance() -> render();
     }
 
-    g_game -> clean();
+    Game::Instance() -> clean();
 
     return 0;
 }
