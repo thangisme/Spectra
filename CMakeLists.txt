@@ -9,6 +9,12 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/Game.cpp
         include/TextureManager.h
         src/TextureManager.cpp
+        include/GameObject.h
+        src/GameObject.cpp
+        include/Player.h
+        src/Player.cpp
+        include/Enemy.h
+        src/Enemy.cpp
 )
 
 # --- SDL2 SETUP ---
