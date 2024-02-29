@@ -38,7 +38,7 @@ void Game::render() {
     SDL_RenderClear(m_pRenderer);
 
     for (GameObject* m_object : m_gameObjects){
-        m_object -> draw(m_pRenderer);
+        m_object -> draw();
     }
 
     SDL_RenderPresent(m_pRenderer);
