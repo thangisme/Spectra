@@ -2,6 +2,12 @@
 #define PLATFORMER_GAME_H
 
 #include <SDL.h>
+#include <SDL_image.h>
+#include <vector>
+
+#include "GameObject.h"
+#include "Player.h"
+#include "TextureManager.h"
 
 class Game {
 public:
@@ -17,6 +23,8 @@ private:
     SDL_Window* m_pWindow;
     SDL_Renderer* m_pRenderer;
     bool m_bRunning;
+
+    std::vector<GameObject*> m_gameObjects;
 };
 
 #endif //PLATFORMER_GAME_H

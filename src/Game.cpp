@@ -35,6 +35,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 void Game::render() {
     SDL_RenderClear(m_pRenderer);
 
+    for (GameObject* m_object : m_gameObjects){
+        m_object -> draw(m_pRenderer);
+    }
+
     SDL_RenderPresent(m_pRenderer);
 }
 
@@ -59,5 +63,7 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
-
+    for (GameObject* m_object : m_gameObjects){
+        m_object -> update();
+    }
 }
