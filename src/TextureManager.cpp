@@ -43,7 +43,7 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
     srcRect.x = width * currentFrame;
     srcRect.y = height * (currentRow - 1);
     srcRect.w = destRect.w = width;
-    srcRect.h = srcRect.h = height;
+    srcRect.h = destRect.h = height;
     destRect.x = x;
     destRect.y = y;
 
