@@ -24,6 +24,7 @@ public:
     Vector2D operator/ (float scalar);
     Vector2D& operator/=(float scalar);
 
+    void normalize();
 private:
     float m_x;
     float m_y;

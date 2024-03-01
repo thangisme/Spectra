@@ -47,3 +47,10 @@ Vector2D& Vector2D::operator/=(float scalar) {
 
     return *this;
 }
+
+void Vector2D::normalize() {
+    float l = length();
+    if (l > 0) {
+        (*this) *= 1 / l;
+    }
+}
