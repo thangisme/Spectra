@@ -17,6 +17,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/Player.cpp
         include/Enemy.h
         src/Enemy.cpp
+        include/Vector.h
+        src/Vector.cpp
 
 )
 
