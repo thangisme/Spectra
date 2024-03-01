@@ -4,12 +4,12 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <vector>
-
 #include "GameObject.h"
 #include "SDLGameObject.h"
-#include "Player.h"
-#include "Enemy.h"
 #include "TextureManager.h"
+
+class Player;
+class Enemy;
 
 class Game {
 public:

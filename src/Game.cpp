@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Game.h"
+#include "Player.h"
+#include "Enemy.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -31,6 +33,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     }
     std::cout << "Initialization process succeed" << std::endl;
     m_bRunning = true;
+
     return true;
 }
 
