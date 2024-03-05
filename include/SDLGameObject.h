@@ -15,6 +15,7 @@ public:
     virtual void clean();
 protected:
     Vector2D m_pos;
+    Vector2D m_velocity;
 
     int m_width;
     int m_height;
