@@ -1,5 +1,5 @@
-#ifndef PLATFORMER_VECTOR_H
-#define PLATFORMER_VECTOR_H
+#ifndef PLATFORMER_VECTOR2D_H
+#define PLATFORMER_VECTOR2D_H
 
 #include <math.h>
 
@@ -30,4 +30,4 @@ private:
     float m_y;
 };
 
-#endif //PLATFORMER_VECTOR_H
+#endif //PLATFORMER_VECTOR2D_H
