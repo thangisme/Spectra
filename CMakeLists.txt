@@ -19,6 +19,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/Enemy.cpp
         include/Vector2D.h
         src/Vector2D.cpp
+        include/InputHandler.h
+        src/InputHandler.cpp
 
 )
 

@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -55,16 +56,7 @@ void Game::clean() {
 }
 
 void Game::handleEvents() {
-    SDL_Event event;
-    if (SDL_PollEvent(&event)) {
-        switch (event.type) {
-            case SDL_QUIT:
-                m_bRunning = false;
-                break;
-            default:
-                break;
-        }
-    }
+    InputHandler::Instance() -> update();
 }
 
 void Game::update() {
