@@ -27,6 +27,7 @@ public:
     void quit() { m_bRunning = false; };
     bool running() { return m_bRunning; }
     SDL_Renderer* getRenderer() const { return m_pRenderer; }
+    GameStateManager* getStateManager() { return m_pGameStateManager; }
 private:
     Game();
     static Game* s_pInstance;
