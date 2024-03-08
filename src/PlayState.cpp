@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
 #include "PauseState.h"
@@ -29,9 +30,15 @@ bool PlayState::onEnter() {
         return false;
     }
 
+    if (!TextureManager::Instance() -> load("assets/objects/goblin.png", "goblin", Game::Instance() -> getRenderer())) {
+        return false;
+    }
+
     GameObject* player = new Player(new LoaderParams(0, 0, 192, 192, "warrior"));
+    GameObject* enemy = new Enemy(new LoaderParams(400, 300, 192, 192, "goblin"));
 
     m_gameObjects.push_back(player);
+    m_gameObjects.push_back(enemy);
 
     std::cout << "Entering PlayState" << std::endl;
     return true;
