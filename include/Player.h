@@ -10,6 +10,7 @@ public:
     virtual void draw();
     virtual void update();
     virtual void clean();
+    virtual void handleInput();
 };
 
 #endif //PLAYER_H
