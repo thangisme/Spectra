@@ -4,8 +4,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "LoaderParams.h"
+#include "SDLGameObject.h"
 #include "InputHandler.h"
 #include "PauseState.h"
+#include "GameOverState.h"
 #include <iostream>
 
 const std::string PlayState::s_playID = "PLAY";
@@ -16,6 +18,10 @@ void PlayState::update() {
     }
     for (auto& obj : m_gameObjects) {
         obj -> update();
+    }
+
+    if (checkCollision(dynamic_cast<SDLGameObject *>(m_gameObjects[0]), dynamic_cast<SDLGameObject *>(m_gameObjects[1]))) {
+        Game::Instance() -> getStateManager() ->pushState(new GameOverState());
     }
 }
 
@@ -53,5 +59,29 @@ bool PlayState::onExit() {
     TextureManager::Instance() ->clearFromTextureMap("warrior");
 
     std::cout << "Exiting PlayState" << std::endl;
+    return true;
+}
+
+bool PlayState::checkCollision(SDLGameObject *a, SDLGameObject *b) {
+    int leftA, leftB;
+    int rightA, rightB;
+    int topA, topB;
+    int bottomA, bottomB;
+
+    leftA = a -> getPosition().getX();
+    rightA = a -> getPosition().getX() + a -> getWidth();
+    topA = a -> getPosition().getY();
+    bottomA = a -> getPosition().getY() + a -> getHeight();
+
+    leftB = b -> getPosition().getX();
+    rightB = b -> getPosition().getX() + b ->getWidth();
+    topB = b ->getPosition().getY();
+    bottomB = b ->getPosition().getY() + b ->getHeight();
+
+    if( bottomA <= topB ){ return false; }
+    if( topA >= bottomB ){ return false; }
+    if( rightA <= leftB ){ return false; }
+    if( leftA >= rightB ){ return false; }
+
     return true;
 }

@@ -32,6 +32,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/MenuButton.cpp
         include/PauseState.h
         src/PauseState.cpp
+        include/GameOverState.h
+        src/GameOverState.cpp
 
 )
 

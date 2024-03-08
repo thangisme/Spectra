@@ -5,6 +5,8 @@
 #include "GameState.h"
 #include "GameObject.h"
 
+class SDLGameObject;
+
 class PlayState : public GameState {
 public:
     virtual void update();
@@ -12,6 +14,8 @@ public:
 
     virtual bool onEnter();
     virtual bool onExit();
+
+    bool checkCollision(SDLGameObject* a, SDLGameObject* b);
 
     virtual std::string getStateID() const { return s_playID; }
 private:
