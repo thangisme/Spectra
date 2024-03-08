@@ -10,7 +10,11 @@ SDLGameObject::SDLGameObject(const LoaderParams *pParams) : GameObject(pParams),
 }
 
 void SDLGameObject::draw() {
-    TextureManager::Instance() -> drawFrame(m_textureID, m_pos.getX(), m_pos.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance() -> getRenderer());
+    if (m_velocity.getX() < 0) {
+        TextureManager::Instance() -> drawFrame(m_textureID, m_pos.getX(), m_pos.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance() -> getRenderer(), SDL_FLIP_HORIZONTAL);
+    } else {
+        TextureManager::Instance() -> drawFrame(m_textureID, m_pos.getX(), m_pos.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance() -> getRenderer());
+    }
 }
 
 void SDLGameObject::update() {
