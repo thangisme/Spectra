@@ -31,6 +31,8 @@ public:
     bool isKeyDown(SDL_Scancode key);
     void onKeyDown();
     void onKeyUp();
+
+    void reset();
 private:
     InputHandler();
     ~InputHandler();
