@@ -4,12 +4,10 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <vector>
+#include "GameStateManager.h"
 #include "GameObject.h"
 #include "SDLGameObject.h"
 #include "TextureManager.h"
-
-class Player;
-class Enemy;
 
 class Game {
 public:
@@ -37,7 +35,7 @@ private:
     SDL_Renderer* m_pRenderer;
     bool m_bRunning;
 
-    std::vector<GameObject*> m_gameObjects;
+    GameStateManager* m_pGameStateManager;
 };
 
 #endif //PLATFORMER_GAME_H

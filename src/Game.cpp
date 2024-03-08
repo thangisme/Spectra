@@ -1,13 +1,14 @@
 #include <iostream>
 #include "Game.h"
-#include "Player.h"
-#include "Enemy.h"
 #include "InputHandler.h"
+#include "PlayState.h"
+#include "MenuState.h"
 
 Game* Game::s_pInstance = 0;
 
-Game::Game() {}
+Game::Game() : m_pWindow(0), m_pRenderer(0), m_bRunning(false), m_pGameStateManager(0){}
 Game::~Game() {}
+
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, int flags) {
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
@@ -35,15 +36,16 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     std::cout << "Initialization process succeed" << std::endl;
     m_bRunning = true;
 
+    m_pGameStateManager = new GameStateManager();
+    m_pGameStateManager ->changeState(new MenuState());
+
     return true;
 }
 
 void Game::render() {
     SDL_RenderClear(m_pRenderer);
 
-    for (GameObject* m_object : m_gameObjects){
-        m_object -> draw();
-    }
+    m_pGameStateManager -> render();
 
     SDL_RenderPresent(m_pRenderer);
 }
@@ -57,10 +59,12 @@ void Game::clean() {
 
 void Game::handleEvents() {
     InputHandler::Instance() -> update();
+
+    if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_RETURN)) {
+        m_pGameStateManager -> changeState(new PlayState());
+    }
 }
 
 void Game::update() {
-    for (GameObject* m_object : m_gameObjects){
-        m_object -> update();
-    }
+    m_pGameStateManager -> update();
 }

@@ -21,6 +21,15 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/Vector2D.cpp
         include/InputHandler.h
         src/InputHandler.cpp
+        include/GameState.h
+        include/MenuState.h
+        src/MenuState.cpp
+        include/PlayState.h
+        src/PlayState.cpp
+        include/GameStateManager.h
+        src/GameStateManager.cpp
+        include/MenuButton.h
+        src/MenuButton.cpp
 
 )
 
