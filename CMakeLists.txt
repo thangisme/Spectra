@@ -40,8 +40,7 @@ add_executable(${PROJECT_NAME} src/main.cpp
 # --- SDL2 SETUP ---
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 set(SDL2_PATH "SDL2/x86_64-w64-mingw32")
-
-find_package(SDL2 REQUIRED)
+set(SDL2_IMAGE_PATH "SDL2/x86_64-w64-mingw32")
 
 # Locate SDL2 and SDL_image libraries
 find_package(SDL2 REQUIRED)
