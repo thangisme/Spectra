@@ -2,8 +2,8 @@
 #include "Game.h"
 
 const char* TITLE = "Platformer";
-const int WINDOW_WIDTH = 1920;
-const int WINDOW_HEIGHT = 1080;
+const int WINDOW_WIDTH = 1280;
+const int WINDOW_HEIGHT = 720;
 const int INITIAL_X = SDL_WINDOWPOS_CENTERED;
 const int INITIAL_Y = SDL_WINDOWPOS_CENTERED;
 const int SDL_FLAG = 0;
