@@ -39,6 +39,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         include/StateParser.h
         src/StateParser.cpp
         include/MenuState.h
+        include/tinyxml2.cpp
+        include/tinyxml2.h
 
 )
 
