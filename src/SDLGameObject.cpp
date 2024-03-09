@@ -1,12 +1,17 @@
 #include "SDLGameObject.h"
 
-SDLGameObject::SDLGameObject(const LoaderParams *pParams) : GameObject(pParams), m_pos(pParams -> getX(), pParams -> getY()),
-                                                            m_velocity(0, 0), m_acceleration(0, 0){
+SDLGameObject::SDLGameObject() : GameObject() {}
+
+void SDLGameObject::load(const LoaderParams *pParams) {
+    m_pos = Vector2D(pParams -> getX(), pParams -> getY());
+    m_velocity = Vector2D(0,0);
+    m_acceleration = Vector2D(0,0);
     m_width = pParams -> getWidth();
     m_height = pParams -> getHeight();
     m_textureID = pParams -> getTextureID();
-    m_currentRow = 0;
     m_currentFrame = 0;
+    m_currentRow = 0;
+    m_numFrames = pParams -> getNumFrames();
 }
 
 void SDLGameObject::draw() {

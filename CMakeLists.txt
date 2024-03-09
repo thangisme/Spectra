@@ -22,8 +22,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         include/InputHandler.h
         src/InputHandler.cpp
         include/GameState.h
-        include/MenuState.h
-        src/MenuState.cpp
+        include/MainMenuState.h
+        src/MainMenuState.cpp
         include/PlayState.h
         src/PlayState.cpp
         include/GameStateManager.h
@@ -34,6 +34,11 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/PauseState.cpp
         include/GameOverState.h
         src/GameOverState.cpp
+        include/GameObjectFactory.h
+        src/GameObjectFactory.cpp
+        include/StateParser.h
+        src/StateParser.cpp
+        include/MenuState.h
 
 )
 

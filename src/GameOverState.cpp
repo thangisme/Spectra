@@ -2,7 +2,7 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "MenuButton.h"
-#include "MenuState.h"
+#include "MainMenuState.h"
 #include "PlayState.h"
 #include <iostream>
 
@@ -57,7 +57,7 @@ bool GameOverState::onExit() {
 }
 
 void GameOverState::s_gameOverToMain() {
-    Game::Instance() -> getStateManager() ->changeState(new MenuState());
+    Game::Instance() -> getStateManager() ->changeState(new MainMenuState());
 }
 
 void GameOverState::s_restartPlay() {

@@ -2,7 +2,8 @@
 #include "Game.h"
 #include "InputHandler.h"
 #include "PlayState.h"
-#include "MenuState.h"
+#include "MainMenuState.h"
+#include "GameObjectFactory.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -36,8 +37,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     std::cout << "Initialization process succeed" << std::endl;
     m_bRunning = true;
 
+    GameObjectFactory::Instance() ->registerType("MenuButton", new MenuButtonCreator());
+
     m_pGameStateManager = new GameStateManager();
-    m_pGameStateManager ->changeState(new MenuState());
+    m_pGameStateManager ->changeState(new MainMenuState());
 
     return true;
 }

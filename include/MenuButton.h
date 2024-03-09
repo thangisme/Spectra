@@ -2,6 +2,7 @@
 #define PLATFORMER_MENUBUTTON_H
 
 #include "SDLGameObject.h"
+#include "GameObjectFactory.h"
 
 enum button_state {
     MOUSE_OUT = 0,
@@ -16,9 +17,14 @@ public:
     virtual void draw();
     virtual void update();
     virtual void clean();
+    virtual void load(const LoaderParams* pParams);
+
+    void setCallback(void(*callback)()) { m_callback = callback; }
+    int getCallbackID() { return m_callbackID; }
 private:
     void (*m_callback)();
     bool m_bReleased;
+    int m_callbackID;
 };
 
 #endif //PLATFORMER_MENUBUTTON_H

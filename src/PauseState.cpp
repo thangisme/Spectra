@@ -1,6 +1,6 @@
 #include "PauseState.h"
 #include "Game.h"
-#include "MenuState.h"
+#include "MainMenuState.h"
 #include "MenuButton.h"
 #include "InputHandler.h"
 #include <iostream>
@@ -8,7 +8,7 @@
 const std::string PauseState::s_pauseID = "PAUSE";
 
 void PauseState::s_pauseToMain() {
-    Game::Instance() -> getStateManager() ->changeState(new MenuState());
+    Game::Instance() -> getStateManager() ->changeState(new MainMenuState());
 }
 
 void PauseState::s_resumePlay() {
