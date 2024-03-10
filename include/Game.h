@@ -28,6 +28,9 @@ public:
     bool running() { return m_bRunning; }
     SDL_Renderer* getRenderer() const { return m_pRenderer; }
     GameStateManager* getStateManager() { return m_pGameStateManager; }
+
+    int getGameWidth() const { return m_gameWidth; }
+    int getGameHeight() const { return m_gameHeight; }
 private:
     Game();
     static Game* s_pInstance;
@@ -35,6 +38,9 @@ private:
     SDL_Window* m_pWindow;
     SDL_Renderer* m_pRenderer;
     bool m_bRunning;
+
+    int m_gameWidth;
+    int m_gameHeight;
 
     GameStateManager* m_pGameStateManager;
 };

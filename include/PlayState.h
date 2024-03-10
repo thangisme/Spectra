@@ -4,6 +4,7 @@
 #include <vector>
 #include "GameState.h"
 #include "GameObject.h"
+#include "Level.h"
 
 class SDLGameObject;
 
@@ -21,6 +22,7 @@ public:
 private:
     static const std::string s_playID;
     std::vector<GameObject*> m_gameObjects;
+    Level* pLevel;
 };
 
 #endif //PLATFORMER_PLAYSTATE_H

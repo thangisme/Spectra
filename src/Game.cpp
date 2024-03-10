@@ -21,6 +21,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
         if (m_pWindow != 0) {
             std::cout << "Window creation succeeded" << std::endl;
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+            m_gameWidth = width;
+            m_gameHeight = height;
 
             if (m_pRenderer != 0){
                 std::cout << "Render creation succeeded" << std::endl;

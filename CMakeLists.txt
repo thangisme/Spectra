@@ -41,6 +41,17 @@ add_executable(${PROJECT_NAME} src/main.cpp
         include/MenuState.h
         include/tinyxml2.cpp
         include/tinyxml2.h
+        include/base64.cpp
+        include/base64.h
+        include/Level.h
+        include/zlib/zlib.h
+        include/zlib/gzlib.c
+        include/Layer.h
+        src/Level.cpp
+        include/TileLayer.h
+        include/LevelParser.h
+        src/LevelParser.cpp
+        src/TileLayer.cpp
 
 )
 
@@ -53,13 +64,16 @@ set(SDL2_IMAGE_PATH "SDL2/x86_64-w64-mingw32")
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 
+add_subdirectory(include/zlib)
+
 include_directories(
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIRS}
+        ${ZLIB_DEPS_DIR}
         include
 )
 
 file(COPY ${CMAKE_SOURCE_DIR}/data DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
 
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} zlib)
