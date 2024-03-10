@@ -44,8 +44,6 @@ add_executable(${PROJECT_NAME} src/main.cpp
         include/base64.cpp
         include/base64.h
         include/Level.h
-        include/zlib/zlib.h
-        include/zlib/gzlib.c
         include/Layer.h
         src/Level.cpp
         include/TileLayer.h
