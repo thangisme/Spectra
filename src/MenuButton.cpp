@@ -1,7 +1,7 @@
 #include "MenuButton.h"
 #include "InputHandler.h"
 
-MenuButton::MenuButton(const LoaderParams *pParams, void (*callback)()) :  m_callback(callback), m_bReleased(true){
+MenuButton::MenuButton() : m_bReleased(true){
     m_currentFrame = MOUSE_OUT;
 }
 

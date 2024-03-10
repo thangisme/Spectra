@@ -4,9 +4,10 @@
 #include "MenuButton.h"
 #include "MainMenuState.h"
 #include "PlayState.h"
+#include "StateParser.h"
 #include <iostream>
 
-const std::string GameOverState::s_overID = "Over";
+const std::string GameOverState::s_overID = "GAMEOVER";
 
 void GameOverState::update() {
     for (auto& obj : m_gameObjects) {
@@ -21,26 +22,26 @@ void GameOverState::render() {
 }
 
 bool GameOverState::onEnter() {
-    if (!TextureManager::Instance() ->load("assets/ui/restartBtn.png", "restartbutton", Game::Instance() -> getRenderer())) {
-        return false;
-    }
-    if (!TextureManager::Instance() ->load("assets/ui/mainBtn.png", "menubutton", Game::Instance() -> getRenderer())) {
-        return false;
-    }
-    if (!TextureManager::Instance() ->load("assets/ui/banner.png", "banner", Game::Instance() -> getRenderer())) {
-        return false;
-    }
+    StateParser stateParser;
+    stateParser.parseState("data/states.xml", s_overID, &m_gameObjects,&m_textureIDList);
 
-    GameObject* overBanner = new SDLGameObject(new LoaderParams(100, 100, 200, 100,  "banner"));
-    GameObject* restartBtn = new MenuButton(new LoaderParams(100, 300, 200, 100, "restartbutton"), s_restartPlay);
-    GameObject* menuBtn = new MenuButton(new LoaderParams(100, 500, 200, 100, "menubutton"), s_gameOverToMain);
+    m_callbacks.push_back(0);
+    m_callbacks.push_back(s_gameOverToMain);
+    m_callbacks.push_back(s_restartPlay);
 
-    m_gameObjects.push_back(overBanner);
-    m_gameObjects.push_back(restartBtn);
-    m_gameObjects.push_back(menuBtn);
+    setCallbacks(m_callbacks);
 
     std::cout << "Entering GameOverState" << std::endl;
     return true;
+}
+
+void GameOverState::setCallbacks(const std::vector<Callback> &callbacks) {
+    for (int i = 0; i < m_gameObjects.size(); i++) {
+        if (dynamic_cast<MenuButton*> (m_gameObjects[i])) {
+            MenuButton* pButton = dynamic_cast<MenuButton*> (m_gameObjects[i]);
+            pButton ->setCallback(callbacks[pButton -> getCallbackID()]);
+        }
+    }
 }
 
 bool GameOverState::onExit() {
@@ -49,8 +50,10 @@ bool GameOverState::onExit() {
     }
 
     m_gameObjects.clear();
-    TextureManager::Instance() ->clearFromTextureMap("playbutton");
-    TextureManager::Instance() ->clearFromTextureMap("exitbutton");
+
+    for (std::string textureID : m_textureIDList) {
+        TextureManager::Instance() ->clearFromTextureMap(textureID);
+    }
 
     std::cout << "Exiting GameOverState" << std::endl;
     return true;

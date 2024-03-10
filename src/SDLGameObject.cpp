@@ -1,6 +1,6 @@
 #include "SDLGameObject.h"
 
-SDLGameObject::SDLGameObject() : GameObject() {}
+SDLGameObject::SDLGameObject() : GameObject(), m_acceleration((Vector2D(0, 0))), m_velocity(Vector2D(0, 0)), m_pos(Vector2D(0, 0)) {}
 
 void SDLGameObject::load(const LoaderParams *pParams) {
     m_pos = Vector2D(pParams -> getX(), pParams -> getY());

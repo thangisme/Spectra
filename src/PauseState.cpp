@@ -3,6 +3,7 @@
 #include "MainMenuState.h"
 #include "MenuButton.h"
 #include "InputHandler.h"
+#include "StateParser.h"
 #include <iostream>
 
 const std::string PauseState::s_pauseID = "PAUSE";
@@ -28,22 +29,26 @@ void PauseState::render() {
 }
 
 bool PauseState::onEnter() {
-    if (!TextureManager::Instance() -> load("assets/ui/resumeBtn.png", "resumeBtn", Game::Instance() -> getRenderer())) {
-        return false;
-    }
+    StateParser stateParser;
+    stateParser.parseState("data/states.xml", s_pauseID, &m_gameObjects, &m_textureIDList);
 
-    if (!TextureManager::Instance() -> load("assets/ui/mainBtn.png", "mainBtn", Game::Instance() -> getRenderer())) {
-        return false;
-    }
+    m_callbacks.push_back(0);
+    m_callbacks.push_back(s_pauseToMain);
+    m_callbacks.push_back(s_resumePlay);
 
-    GameObject* mainBtn = new MenuButton(new LoaderParams(200, 100, 200, 80, "mainBtn"), s_pauseToMain);
-    GameObject* resumeBtn = new MenuButton(new LoaderParams(200, 300, 200, 80, "resumeBtn"), s_resumePlay);
-
-    m_gameObjects.push_back(mainBtn);
-    m_gameObjects.push_back(resumeBtn);
+    setCallbacks(m_callbacks);
 
     std::cout << "Entering PauseState" << std::endl;
     return true;
+}
+
+void PauseState::setCallbacks(const std::vector<Callback> &callbacks) {
+    for (int i = 0; i < m_gameObjects.size(); i++) {
+        if (dynamic_cast<MenuButton*> (m_gameObjects[i])) {
+            MenuButton* pButton = dynamic_cast<MenuButton*> (m_gameObjects[i]);
+            pButton ->setCallback(callbacks[pButton -> getCallbackID()]);
+        }
+    }
 }
 
 bool PauseState::onExit() {
@@ -52,8 +57,11 @@ bool PauseState::onExit() {
     }
 
     m_gameObjects.clear();
-    TextureManager::Instance() ->clearFromTextureMap("mainBtn");
-    TextureManager::Instance() ->clearFromTextureMap("resumeBtn");
+
+    for (std::string textureID : m_textureIDList) {
+        TextureManager::Instance() ->clearFromTextureMap(textureID);
+    }
+
     InputHandler::Instance() -> reset();
 
     std::cout << "exiting PauseState" << std::endl;

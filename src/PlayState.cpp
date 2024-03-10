@@ -8,6 +8,7 @@
 #include "InputHandler.h"
 #include "PauseState.h"
 #include "GameOverState.h"
+#include "StateParser.h"
 #include <iostream>
 
 const std::string PlayState::s_playID = "PLAY";
@@ -32,19 +33,8 @@ void PlayState::render() {
 }
 
 bool PlayState::onEnter() {
-    if (!TextureManager::Instance() -> load("assets/objects/warrior.png", "warrior", Game::Instance() -> getRenderer())) {
-        return false;
-    }
-
-    if (!TextureManager::Instance() -> load("assets/objects/goblin.png", "goblin", Game::Instance() -> getRenderer())) {
-        return false;
-    }
-
-    GameObject* player = new Player(new LoaderParams(0, 0, 192, 192, "warrior"));
-    GameObject* enemy = new Enemy(new LoaderParams(400, 300, 192, 192, "goblin"));
-
-    m_gameObjects.push_back(player);
-    m_gameObjects.push_back(enemy);
+    StateParser stateParser;
+    stateParser.parseState("data/states.xml", s_playID, &m_gameObjects, &m_textureIDList);
 
     std::cout << "Entering PlayState" << std::endl;
     return true;
@@ -56,7 +46,10 @@ bool PlayState::onExit() {
     }
 
     m_gameObjects.clear();
-    TextureManager::Instance() ->clearFromTextureMap("warrior");
+
+    for (std::string textureID : m_textureIDList) {
+        TextureManager::Instance() ->clearFromTextureMap(textureID);
+    }
 
     std::cout << "Exiting PlayState" << std::endl;
     return true;

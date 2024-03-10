@@ -2,12 +2,15 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "GameObjectFactory.h"
+#include <iostream>
 
-bool StateParser::parseState(const char *stateFile, std::string stateID) {
+bool StateParser::parseState(const char* stateFile, std::string stateID, std::vector<GameObject*> *pObjects, std::vector<std::string> *pTextureIDs) {
     tinyxml2::XMLDocument xmlDoc;
+    xmlDoc.LoadFile(stateFile);
 
-    if (!xmlDoc.LoadFile(stateFile)) {
-        std::cerr << xmlDoc.ErrorStr() << std::endl;
+    if (xmlDoc.ErrorID()) {
+        std::cout << xmlDoc.ErrorID() << std::endl;
+        std::cout << "Failed to load state file" << std::endl;
         return false;
     }
 

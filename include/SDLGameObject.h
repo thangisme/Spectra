@@ -4,11 +4,14 @@
 #include <string>
 #include "Game.h"
 #include "Vector2D.h"
+#include "GameObjectFactory.h"
 
 
 class SDLGameObject : public GameObject {
 public:
     SDLGameObject();
+
+    void load(const LoaderParams *pParams);
 
     virtual void draw();
     virtual void update();
@@ -30,6 +33,13 @@ protected:
     int m_numFrames;
 
     std::string m_textureID;
+};
+
+class SDLObjectCreator : public BaseCreator {
+    GameObject* createGameObject() const
+    {
+        return new SDLGameObject();
+    }
 };
 
 #endif //PLATFORMER_SDLGAMEOBJECT_H

@@ -3,10 +3,10 @@
 
 
 #include <vector>
-#include "GameState.h"
+#include "MenuState.h"
 #include "GameObject.h"
 
-class GameOverState : public GameState {
+class GameOverState : public MenuState {
 public:
     virtual void update();
     virtual void render();
@@ -14,7 +14,9 @@ public:
     virtual bool onEnter();
     virtual bool onExit();
 
-    virtual std::string getStateID() const { return s_overID; }
+    virtual std::string getStateID() const { return s_overID; };
+
+    virtual void setCallbacks(const std::vector<Callback>& callbacks);
 private:
     static const std::string s_overID;
 

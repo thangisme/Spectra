@@ -22,7 +22,7 @@ void MainMenuState::render() {
 
 bool MainMenuState::onEnter() {
     StateParser stateParser;
-    stateParser.parseState("states.xml", s_menuID, &m_gameObjects, &m_textureIDList);
+    stateParser.parseState("data/states.xml", s_menuID, &m_gameObjects, &m_textureIDList);
     m_callbacks.push_back(0); // callbackID start from 1
     m_callbacks.push_back(s_menuToPlay);
     m_callbacks.push_back(s_exitFromMenu);

@@ -14,7 +14,7 @@ void Player::draw() {
 void Player::update() {
     SDLGameObject::update();
     m_currentFrame = ((SDL_GetTicks() / 100) % 6);
-    m_currentRow = 3;
+    m_currentRow = 2;
     handleInput();
 }
 
