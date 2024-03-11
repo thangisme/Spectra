@@ -22,9 +22,7 @@ void PlayState::update() {
         obj -> update();
     }
 
-    if (checkCollision(dynamic_cast<SDLGameObject *>(m_gameObjects[0]), dynamic_cast<SDLGameObject *>(m_gameObjects[1]))) {
-        Game::Instance() -> getStateManager() ->pushState(new GameOverState());
-    }
+
 }
 
 void PlayState::render() {

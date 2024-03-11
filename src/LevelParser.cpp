@@ -3,10 +3,16 @@
 #include "Game.h"
 #include "TileLayer.h"
 #include "Level.h"
+#include <iostream>
 
 Level* LevelParser::parseLevel(const char *levelFile) {
     tinyxml2::XMLDocument levelDoc;
     levelDoc.LoadFile(levelFile);
+
+    if (levelDoc.ErrorID()) {
+        std::cout << "Failed to load tilemap" << std::endl;
+        return NULL;
+    }
 
     Level* pLevel = new Level();
 
@@ -33,15 +39,14 @@ Level* LevelParser::parseLevel(const char *levelFile) {
 
 void LevelParser::parseTilesets(tinyxml2::XMLElement *pTilesetRoot, std::vector<Tileset> *pTilesets) {
     TextureManager::Instance() ->load(pTilesetRoot ->FirstChildElement() ->Attribute("source"), pTilesetRoot ->Attribute("name"), Game::Instance() -> getRenderer());
-
     Tileset tileset;
     pTilesetRoot ->FirstChildElement() ->QueryIntAttribute("width", &tileset.width);
     pTilesetRoot ->FirstChildElement() ->QueryIntAttribute("height", &tileset.height);
-    pTilesetRoot ->QueryIntAttribute("firstgrid", &tileset.firstGridID);
+    pTilesetRoot ->QueryIntAttribute("firstgid", &tileset.firstGridID);
     pTilesetRoot ->QueryIntAttribute("tilewidth", &tileset.tileWidth);
     pTilesetRoot ->QueryIntAttribute("tileheight", &tileset.tileHeight);
-    pTilesetRoot ->QueryIntAttribute("spacing", &tileset.spacing);
-    pTilesetRoot ->QueryIntAttribute("margin", &tileset.margin);
+    if (pTilesetRoot ->QueryIntAttribute("spacing", &tileset.spacing) == tinyxml2::XML_NO_ATTRIBUTE) tileset.spacing = 0;
+    if (pTilesetRoot ->QueryIntAttribute("margin", &tileset.margin) == tinyxml2::XML_NO_ATTRIBUTE) tileset.margin = 0;
     tileset.name = pTilesetRoot ->Attribute("name");
     tileset.numColumns = tileset.width / (tileset.tileWidth + tileset.spacing);
 
@@ -72,7 +77,7 @@ void LevelParser::parseTileLayer(tinyxml2::XMLElement *pTileElement, std::vector
     // Zlib compression library
     uLongf sizeofids = m_width * m_height * sizeof(int);
     std::vector<int> ids(m_width * m_height);
-    uncompress((Bytef*)& ids[0], &sizeofids, (const Bytef*) decodedIDs.c_str(), decodedIDs.size());
+    uncompress((Bytef*)&ids[0], &sizeofids,(const Bytef*)decodedIDs.c_str(), decodedIDs.size());
 
     std::vector<int> layerRow(m_width);
 
