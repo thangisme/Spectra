@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "TileLayer.h"
 #include "Level.h"
+#include "helper.h"
 #include <iostream>
 
 Level* LevelParser::parseLevel(const char *levelFile) {
@@ -70,7 +71,7 @@ void LevelParser::parseTileLayer(tinyxml2::XMLElement *pTileElement, std::vector
 
     for (tinyxml2::XMLNode* e = pDataNode -> FirstChild(); e != NULL; e = e ->NextSibling()) {
         tinyxml2::XMLText* text = e ->ToText();
-        std::string t = text -> Value();
+        std::string t = strip(text -> Value());
         decodedIDs = base64_decode(t);
     }
 
