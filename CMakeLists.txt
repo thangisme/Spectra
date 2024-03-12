@@ -51,6 +51,10 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/LevelParser.cpp
         src/TileLayer.cpp
         include/helper.h
+        include/ObjectLayer.h
+        src/ObjectLayer.cpp
+        include/AnimatedGraphic.h
+        src/AnimatedGraphic.cpp
 
 )
 

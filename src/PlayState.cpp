@@ -22,7 +22,7 @@ void PlayState::update() {
         obj -> update();
     }
 
-
+    pLevel -> update();
 }
 
 void PlayState::render() {

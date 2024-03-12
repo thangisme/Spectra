@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
-  <image source="assets/tilesets/tiles.png" width="400" height="400"/>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="150" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="4">
+ <properties>
+  <property name="warrior" value="assets/objects/warrior.png"/>
+ </properties>
+ <tileset firstgid="1" name="dayplatformer" tilewidth="16" tileheight="16" tilecount="264" columns="24">
+  <image source="assets/tilesets/map1_tileset.png" width="384" height="176"/>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="80" height="45">
-  <data encoding="base64" compression="zlib">eJzt08cJQkEUQNHPL8GEqQMTpg5MTZitwWwNZuv1FiAyO/l4D9zNvFkMAy+KJEmSJEmSJEmSJEmSJEmSJEmSpGTJx1FUoCKVqBz/+kXJ0uS/WtSmDnW//F+K0pShLOVoTBOa0ozmtKAlrQLm/6RCVapRnRq0pg1taUd7OtCRTgHzJArZ2U93epz3aUBDGtGZLnSlG93pQU96BcyTKGRnP915A6zGHis=</data>
+ <layer id="1" name="Tile Layer 1" width="150" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt0TFKA1EYhdFZllEwJIh1TLZgYeIWLEbdQgqNqzArzC0UUqj4JgzvEc6Bj+FVc+HvOgAAAAAAAAAAAAAAAAAAAAAAAAAA4FxcpEm6TFeVt1Cu1fst0l1aplXlLZRr9X4PaZ026bHyFsq1er8+PaeX9Fp3CgP0XZv3e0vvaZc+Km+hXIv3u/3qM+2P3r+ZpfnR97+u03Tgxr92DDFky80Pjf3Pkj3f9zt15ynupRF6kkZoK43QARic9Qs=
+  </data>
  </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="3" x="170.667" y="50" type="Player">
+   <properties>
+    <property name="numFrames" value="6"/>
+    <property name="textureHeight" value="192"/>
+    <property name="textureID" value="warrior"/>
+    <property name="textureWidth" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

@@ -1,11 +1,12 @@
 #include "TextureManager.h"
+#include <iostream>
 
 TextureManager* TextureManager::s_pInstance = 0;
 
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer *pRenderer) {
     SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
-
-    if (pTempSurface == 0) {
+    if (pTempSurface == nullptr) {
+        std::cout << "Failed to load texture: " << id << std::endl;
         return false;
     }
 
@@ -14,6 +15,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer *pR
 
     if (pTexture != 0){
         m_textureMap[id] = pTexture;
+        std::cout << "Loaded texture: " << id << std::endl;
         return true;
     }
 
