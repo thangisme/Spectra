@@ -126,7 +126,6 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
 
             e->QueryIntAttribute("x", &x);
             e->QueryIntAttribute("y", &y);
-            std::cout << x << " " << y << std::endl;
 
             GameObject *pGameObject = GameObjectFactory::Instance()->create(e->Attribute("type"));
 
