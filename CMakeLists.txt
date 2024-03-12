@@ -50,6 +50,7 @@ add_executable(${PROJECT_NAME} src/main.cpp
         include/LevelParser.h
         src/LevelParser.cpp
         src/TileLayer.cpp
+        include/helper.h
 
 )
 
