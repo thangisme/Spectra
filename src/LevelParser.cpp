@@ -17,7 +17,7 @@ Level *LevelParser::parseLevel(const char *levelFile) {
         return NULL;
     }
 
-    Level *pLevel = new Level();
+    pLevel = new Level();
 
     tinyxml2::XMLElement *pRoot = levelDoc.RootElement();
 
@@ -158,7 +158,10 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
                 }
             }
 
-            pGameObject ->load(new LoaderParams(x,y, width, height, textureID, numFrames, callbackID, animSpeed));
+            pGameObject ->load(std::unique_ptr<LoaderParams>(new LoaderParams(x,y, width, height, textureID, numFrames, callbackID, animSpeed)));
+            if (pGameObject->type() == "Player") {
+                pLevel ->setPlayer(dynamic_cast<Player*> (pGameObject));
+            }
             pObjectLayer -> getGameObjects() ->push_back(pGameObject);
         }
     }
