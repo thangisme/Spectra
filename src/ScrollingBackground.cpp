@@ -59,3 +59,7 @@ void ScrollingBackground::update() {
     }
     count++;
 }
+
+void ScrollingBackground::clean() {
+
+}
