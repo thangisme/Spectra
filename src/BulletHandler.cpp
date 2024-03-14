@@ -28,13 +28,57 @@ void BulletHandler::addEnemyBullet(int x, int y, int width, int height, std::str
 }
 
 void BulletHandler::updateBullets() {
-    for (std::vector<PlayerBullet*>::iterator p_it = m_playerBullets.begin(); p_it != m_playerBullets.end();){
-        if ((*p_it) -> getPosition().getX() < 0 || (*p_it) -> getPosition().getX() > Game::Instance() -> getGameWidth() || (*p_it) -> getPosition().getY() < 0 || (*p_it) -> getPosition().getY() > Game::Instance() ->getGameHeight() || (*p_it) -> dead()) {
-            delete *p_it;
+    for (auto p_it = m_playerBullets.begin();
+         p_it != m_playerBullets.end();) {
+        if((*p_it)->getPosition().getX() < 0
+           || (*p_it)->getPosition().getX() > Game::Instance()->getGameWidth()
+           || (*p_it)->getPosition().getY() < 0
+           || (*p_it)->getPosition().getY() > Game::Instance()->getGameHeight()
+           || (*p_it)->dead()) {
+            //delete * p_it;
             p_it = m_playerBullets.erase(p_it);
         } else {
-            (*p_it) -> update();
+            (*p_it)->update();
             ++p_it;
         }
     }
+
+    for (auto e_it = m_enemyBullets.begin();
+         e_it != m_enemyBullets.end();) {
+        if((*e_it)->getPosition().getX() < 0
+           || (*e_it)->getPosition().getX() > Game::Instance()->getGameWidth()
+           || (*e_it)->getPosition().getY() < 0
+           || (*e_it)->getPosition().getY() > Game::Instance()->getGameHeight()
+           || (*e_it)->dead()) {
+            //delete * e_it;
+            e_it = m_enemyBullets.erase(e_it);
+        } else {
+            (*e_it)->update();
+            ++e_it;
+        }
+    }
+}
+
+const std::vector<std::shared_ptr<EnemyBullet>> BulletHandler::getEnemyBullets() {
+    return std::vector<std::shared_ptr<EnemyBullet>>();
+}
+
+const std::vector<std::shared_ptr<PlayerBullet>> BulletHandler::getPlayerBullets() {
+    return std::vector<std::shared_ptr<PlayerBullet>>();
+}
+
+void BulletHandler::drawBullets() {
+    for (unsigned int p = 0; p < m_playerBullets.size(); p++) {
+        m_playerBullets[p]->draw();
+    }
+
+    for (unsigned int e = 0; e < m_enemyBullets.size(); e++) {
+        m_enemyBullets[e]->draw();
+    }
+}
+
+
+void BulletHandler::clearBullets() {
+    m_enemyBullets.clear();
+    m_playerBullets.clear();
 }
