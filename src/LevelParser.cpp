@@ -42,8 +42,9 @@ Level *LevelParser::parseLevel(const char *levelFile) {
         if (e->Value() == std::string("objectgroup") || e->Value() == std::string("layer")) {
             if (e->FirstChildElement()->Value() == std::string("object")) {
                 parseObjectLayer(e, pLevel->getLayers());
-            } else if (e->FirstChildElement()->Value() == std::string("data")) {
-                parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
+            } else if (e->FirstChildElement()->Value() == std::string("data") || (e ->FirstChildElement() ->NextSiblingElement() != 0 && e->FirstChildElement() ->NextSiblingElement() -> Value() == std::string("data"))) {
+                parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel -> getCollisionLayers());
+                pLevel -> getCollisionLayers();
             }
         }
     }
@@ -68,11 +69,12 @@ void LevelParser::parseTilesets(tinyxml2::XMLElement *pTilesetRoot, std::vector<
     pTilesets->push_back(tileset);
 }
 
-void LevelParser::parseTileLayer(tinyxml2::XMLElement *pTileElement, std::vector<Layer *> *pLayers,
-                                 const std::vector<Tileset> *pTilesets) {
+void LevelParser::parseTileLayer(tinyxml2::XMLElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets, std::vector<TileLayer*> *pCollisionLayers) {
     TileLayer *pTileLayer = new TileLayer(m_tileSize, *pTilesets);
 
     std::vector<std::vector<int>> data;
+
+    bool collidable = false;
 
     std::string decodedIDs;
     tinyxml2::XMLElement *pDataNode;
@@ -80,6 +82,15 @@ void LevelParser::parseTileLayer(tinyxml2::XMLElement *pTileElement, std::vector
     for (tinyxml2::XMLElement *e = pTileElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
         if (e->Value() == std::string("data")) {
             pDataNode = e;
+        }
+        if (e -> Value() == std::string("properties")) {
+            for (tinyxml2::XMLElement* property = e ->FirstChildElement(); property != NULL; property = property ->NextSiblingElement()) {
+                if (property -> Value() == std::string("property")) {
+                    if (property ->Attribute("name") == std::string("collidable")) {
+                        collidable = true;
+                    }
+                }
+            }
         }
     }
 
@@ -107,6 +118,10 @@ void LevelParser::parseTileLayer(tinyxml2::XMLElement *pTileElement, std::vector
     }
 
     pTileLayer->setTileIDs(data);
+
+    if (collidable) {
+        pCollisionLayers -> push_back(pTileLayer);
+    }
 
     pLayers->push_back(pTileLayer);
 }

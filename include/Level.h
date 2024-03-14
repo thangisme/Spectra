@@ -31,11 +31,13 @@ public:
 
     Player* getPlayer() { return m_pPlayer; }
     void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
+    std::vector<TileLayer*>* getCollisionLayers() { return &m_collisionLayers; }
 private:
     friend class LevelParser;
     Level();
     std::vector<Tileset> m_tilesets;
     std::vector<Layer*> m_layers;
+    std::vector<TileLayer*> m_collisionLayers;
 
     Player* m_pPlayer;
 };

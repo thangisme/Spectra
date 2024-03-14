@@ -22,6 +22,10 @@ public:
     }
 
     Tileset getTilesetByID(int tileID);
+
+    int getTileSize() const { return m_tileSize; }
+    Vector2D getPosition() const { return m_position; }
+    std::vector<std::vector<int>> getTileIDs() const { return m_tileIDs; }
 private:
     int m_numColumns;
     int m_numRows;

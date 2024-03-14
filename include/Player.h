@@ -12,7 +12,8 @@ public:
     virtual void update();
     virtual void clean();
     virtual void load(std::unique_ptr<LoaderParams> const &pParams);
-    virtual std::string type() { return "Player"; }
+    virtual std::string type() { return "Player";}
+    Vector2D getVelocity() const { return m_velocity; }
 private:
     void resurrect();
     void handleInput();
