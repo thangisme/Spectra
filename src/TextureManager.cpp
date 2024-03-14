@@ -37,7 +37,7 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
-void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame,
+void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, double angle, int alpha,
                                SDL_Renderer *pRenderer, SDL_RendererFlip flip) {
     SDL_Rect srcRect;
     SDL_Rect destRect;
@@ -49,7 +49,8 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
     destRect.x = x;
     destRect.y = y;
 
-    SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
+    SDL_SetTextureAlphaMod(m_textureMap[id], alpha);
+    SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, angle, 0, flip);
 }
 
 void TextureManager::clearFromTextureMap(std::string id) {

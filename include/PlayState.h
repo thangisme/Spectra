@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "Level.h"
 
-class SDLGameObject;
+class ShooterObject;
 
 class PlayState : public GameState {
 public:
@@ -16,7 +16,7 @@ public:
     virtual bool onEnter();
     virtual bool onExit();
 
-    bool checkCollision(SDLGameObject* a, SDLGameObject* b);
+    bool checkCollision(ShooterObject* a, ShooterObject* b);
 
     virtual std::string getStateID() const { return s_playID; }
 private:

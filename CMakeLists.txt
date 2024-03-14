@@ -11,8 +11,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/TextureManager.cpp
         include/GameObject.h
         include/LoaderParams.h
-        include/SDLGameObject.h
-        src/SDLGameObject.cpp
+        include/ShooterObject.h
+        src/ShooterObject.cpp
         include/Player.h
         src/Player.cpp
         include/Enemy.h
@@ -55,6 +55,13 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/ObjectLayer.cpp
         include/AnimatedGraphic.h
         src/AnimatedGraphic.cpp
+        include/SoundManager.h
+        src/SoundManager.cpp
+        include/ScrollingBackground.h
+        src/ScrollingBackground.cpp
+        include/Bullet.h
+        include/BulletHandler.h
+        src/BulletHandler.cpp
 
 )
 

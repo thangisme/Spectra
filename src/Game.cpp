@@ -42,7 +42,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     std::cout << "Initialization process succeed" << std::endl;
     m_bRunning = true;
 
-    GameObjectFactory::Instance() ->registerType("SDLGameObject", new SDLObjectCreator());
+    GameObjectFactory::Instance() ->registerType("SDLGameObject", new ShooterObjectCreator());
     GameObjectFactory::Instance() ->registerType("MenuButton", new MenuButtonCreator());
     GameObjectFactory::Instance() ->registerType("Player", new PlayerCreator());
     GameObjectFactory::Instance() ->registerType("Enemy", new EnemyCreator());
@@ -77,4 +77,10 @@ void Game::handleEvents() {
 
 void Game::update() {
     m_pGameStateManager -> update();
+}
+
+void Game::setCurrentLevel(int currentLevel) {
+    m_currentLevel = currentLevel;
+    m_pGameStateManager ->changeState(new BetweenLevelState());
+    m_bLevelComplete = false;
 }

@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "LoaderParams.h"
-#include "SDLGameObject.h"
+#include "ShooterObject.h"
 #include "InputHandler.h"
 #include "PauseState.h"
 #include "GameOverState.h"
@@ -52,7 +52,7 @@ bool PlayState::onExit() {
     return true;
 }
 
-bool PlayState::checkCollision(SDLGameObject *a, SDLGameObject *b) {
+bool PlayState::checkCollision(ShooterObject *a, ShooterObject *b) {
     int leftA, leftB;
     int rightA, rightB;
     int topA, topB;

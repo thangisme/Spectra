@@ -6,7 +6,7 @@
 #include <vector>
 #include "GameStateManager.h"
 #include "GameObject.h"
-#include "SDLGameObject.h"
+#include "ShooterObject.h"
 #include "TextureManager.h"
 
 class Game {
@@ -31,6 +31,9 @@ public:
 
     int getGameWidth() const { return m_gameWidth; }
     int getGameHeight() const { return m_gameHeight; }
+
+    int getCurrentLevel() const { return m_currentLevel; }
+    void setCurrentLevel (int currentLevel);
 private:
     Game();
     static Game* s_pInstance;
@@ -41,6 +44,9 @@ private:
 
     int m_gameWidth;
     int m_gameHeight;
+
+    int m_currentLevel;
+    int m_bLevelComplete;
 
     GameStateManager* m_pGameStateManager;
 };

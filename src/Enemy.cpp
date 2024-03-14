@@ -1,29 +1,19 @@
 #include "Enemy.h"
 
-Enemy::Enemy() : SDLGameObject(){}
+Enemy::Enemy() : ShooterObject(){}
 
 void Enemy::load(const LoaderParams *pParams) {
-    SDLGameObject::load(pParams);
-    m_velocity.setY(2);
+    ShooterObject::load(pParams);
 }
 
 void Enemy::draw() {
-    SDLGameObject::draw();
+    ShooterObject::draw();
 }
 
 void Enemy::update() {
     m_currentFrame = (SDL_GetTicks() / 100) % 6;
-    if (m_pos.getY() < 0) {
-        m_velocity.setY(2);
-    } else if (m_pos.getY() + m_height > 720) {
-        m_velocity.setY(-2);
-    } else if (m_pos.getX() < 0) {
-        m_velocity.setX(1);
-    } else if (m_pos.getX() > 1080) {
-        m_velocity.setX(-1);
-    }
 
-    SDLGameObject::update();
+    ShooterObject::update();
 }
 
 void Enemy::clean() {

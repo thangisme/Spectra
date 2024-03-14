@@ -1,7 +1,7 @@
 #ifndef PLATFORMER_MENUBUTTON_H
 #define PLATFORMER_MENUBUTTON_H
 
-#include "SDLGameObject.h"
+#include "ShooterObject.h"
 #include "GameObjectFactory.h"
 
 enum button_state {
@@ -10,7 +10,7 @@ enum button_state {
     CLICKED = 2
 };
 
-class MenuButton : public SDLGameObject {
+class MenuButton : public ShooterObject {
 public:
     MenuButton();
 
