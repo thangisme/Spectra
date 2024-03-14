@@ -1,19 +1,19 @@
 #include "TextureManager.h"
 #include <iostream>
 
-TextureManager* TextureManager::s_pInstance = 0;
+TextureManager *TextureManager::s_pInstance = 0;
 
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer *pRenderer) {
-    SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
+    SDL_Surface *pTempSurface = IMG_Load(fileName.c_str());
     if (pTempSurface == nullptr) {
         std::cout << "Failed to load texture: " << id << std::endl;
         return false;
     }
 
-    SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+    SDL_Texture *pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
     SDL_FreeSurface(pTempSurface);
 
-    if (pTexture != 0){
+    if (pTexture != 0) {
         m_textureMap[id] = pTexture;
         std::cout << "Loaded texture: " << id << std::endl;
         return true;
@@ -37,8 +37,8 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
-void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, double angle, int alpha,
-                               SDL_Renderer *pRenderer, SDL_RendererFlip flip) {
+void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame,
+                               SDL_Renderer *pRenderer, double angle, int alpha, SDL_RendererFlip flip) {
     SDL_Rect srcRect;
     SDL_Rect destRect;
 

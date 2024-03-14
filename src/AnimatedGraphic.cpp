@@ -6,7 +6,7 @@ AnimatedGraphic::AnimatedGraphic() : ShooterObject()
 
 }
 
-void AnimatedGraphic::load(LoaderParams(* pParams))
+void AnimatedGraphic::load(std::unique_ptr<LoaderParams> const &pParams)
 {
     ShooterObject::load(pParams);
     m_animSpeed = pParams->getAnimSpeed();

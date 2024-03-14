@@ -13,7 +13,7 @@ public:
     AnimatedGraphic();
     virtual ~AnimatedGraphic() {}
 
-    virtual void load(LoaderParams* pParams);
+    virtual void load(std::unique_ptr<LoaderParams> const &pParams);
 
     virtual void draw();
     virtual void update();

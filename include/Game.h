@@ -32,8 +32,19 @@ public:
     int getGameWidth() const { return m_gameWidth; }
     int getGameHeight() const { return m_gameHeight; }
 
-    int getCurrentLevel() const { return m_currentLevel; }
-    void setCurrentLevel (int currentLevel);
+    void setPlayerLives(int lives);
+    int getPlayerLives();
+
+    void setCurrentLevel(int currentLevel);
+    const int getCurrentLevel();
+
+    void setNextLevel(int nextLevel);
+    const int getNextLevel();
+
+    void setLevelComplete(bool levelComplete);
+    const bool getLevelComplete();
+
+    float getScrollSpeed();
 private:
     Game();
     static Game* s_pInstance;
@@ -44,8 +55,12 @@ private:
 
     int m_gameWidth;
     int m_gameHeight;
+    float m_scrollSpeed;
+
+    int m_playerLives;
 
     int m_currentLevel;
+    int m_nextLevel;
     int m_bLevelComplete;
 
     GameStateManager* m_pGameStateManager;
