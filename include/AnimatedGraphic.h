@@ -3,10 +3,10 @@
 
 
 #include "GameObject.h"
-#include "SDLGameObject.h"
+#include "ShooterObject.h"
 #include "GameObjectFactory.h"
 
-class AnimatedGraphic : public SDLGameObject
+class AnimatedGraphic : public ShooterObject
 {
 public:
 
