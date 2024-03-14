@@ -62,6 +62,7 @@ add_executable(${PROJECT_NAME} src/main.cpp
         include/Bullet.h
         include/BulletHandler.h
         src/BulletHandler.cpp
+        include/Collision.h
 
 )
 
