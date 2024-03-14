@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build
 
 on:
   push:
@@ -17,10 +17,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install SDL2 and SDL2_image
+    - name: Install SDL2 and related library
       run: |
         sudo apt-get update
-        sudo apt-get install -y libsdl2-dev libsdl2-2.0-0 libsdl2-image-dev libjpeg-dev libwebp-dev libtiff5-dev libsdl2-image-dev libsdl2-image-2.0-0
+        sudo apt-get install -y libsdl2-dev libsdl2-2.0-0 libsdl2-image-dev libjpeg-dev libwebp-dev libtiff5-dev libsdl2-image-dev libsdl2-image-2.0-0 libmikmod-dev libfishsound1-dev libsmpeg-dev liboggz2-dev libflac-dev libfluidsynth-dev libsdl2-mixer-dev libsdl2-mixer-2.0-0
 
     - name: Configure CMake
       run: cmake -S . -B build
