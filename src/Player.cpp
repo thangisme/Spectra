@@ -3,7 +3,7 @@
 
 Player::Player() : ShooterObject(){}
 
-void Player::load(std::unique_ptr<LoaderParams> const &pParams) {
+void Player::load(const LoaderParams* pParams) {
     ShooterObject::load(pParams);
 }
 

@@ -67,7 +67,7 @@ void StateParser::parseObjects(tinyxml2::XMLElement *pStateRoot, std::vector<Gam
        textureID = e ->Attribute("textureID");
 
        GameObject* pGameObject = GameObjectFactory::Instance() ->create(e ->Attribute("type"));
-       pGameObject ->load(std::unique_ptr<LoaderParams>(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID)));
+       pGameObject ->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID));
        pObjects ->push_back(pGameObject);
     }
 }

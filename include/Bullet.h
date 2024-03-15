@@ -10,7 +10,7 @@ public:
 
     virtual std::string type() { return "PlayerBullet"; }
 
-    virtual void load(std::unique_ptr<LoaderParams> pParams, Vector2D heading) {
+    virtual void load(const LoaderParams* pParams, Vector2D heading) {
         ShooterObject::load(pParams);
         m_heading = heading;
     }

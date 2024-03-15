@@ -4,7 +4,7 @@
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
-#include <memory>
+
 
 #include "LoaderParams.h"
 #include "Vector2D.h"
@@ -13,7 +13,7 @@ class GameObject {
 public:
     virtual ~GameObject() {}
 
-    virtual void load(std::unique_ptr<LoaderParams> const &pParams) = 0;
+    virtual void load(const LoaderParams* pParams) = 0;
 
     virtual void draw() = 0;
 

@@ -23,8 +23,8 @@ public:
 
     void clearBullets();
 
-    const std::vector<std::shared_ptr<PlayerBullet>> getPlayerBullets();
-    const std::vector<std::shared_ptr<EnemyBullet>> getEnemyBullets();
+    const std::vector<PlayerBullet*> getPlayerBullets();
+    const std::vector<EnemyBullet*> getEnemyBullets();
 
 private:
     BulletHandler();

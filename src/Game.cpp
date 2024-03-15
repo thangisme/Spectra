@@ -5,7 +5,6 @@
 #include "MainMenuState.h"
 #include "GameObjectFactory.h"
 #include "Player.h"
-#include "Enemy.h"
 #include "MenuButton.h"
 #include "GameOverState.h"
 

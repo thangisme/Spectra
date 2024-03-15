@@ -5,7 +5,7 @@ MenuButton::MenuButton() : m_bReleased(true){
     m_currentFrame = MOUSE_OUT;
 }
 
-void MenuButton::load(std::unique_ptr<LoaderParams> &pParams) {
+void MenuButton::load(const LoaderParams* pParams) {
     ShooterObject::load(pParams);
     m_callbackID = pParams -> getCallbackID();
     m_currentFrame = MOUSE_OUT;

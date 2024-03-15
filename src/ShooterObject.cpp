@@ -9,7 +9,7 @@ ShooterObject::ShooterObject() : GameObject(),
                                  m_bPlayedDeathSound(false) {
 }
 
-void ShooterObject::load(std::unique_ptr<LoaderParams> const &pParams) {
+void ShooterObject::load(const LoaderParams* pParams) {
     // get position
     m_position = Vector2D(pParams->getX(), pParams->getY());
 

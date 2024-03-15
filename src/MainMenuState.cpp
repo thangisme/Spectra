@@ -4,6 +4,7 @@
 #include "MenuButton.h"
 #include "PlayState.h"
 #include "StateParser.h"
+#include "InputHandler.h"
 #include <iostream>
 
 const std::string MainMenuState::s_menuID = "MENU";
@@ -38,13 +39,13 @@ bool MainMenuState::onExit() {
     for (auto& obj : m_gameObjects) {
         obj -> clean();
     }
-
     m_gameObjects.clear();
+
+    InputHandler::Instance() -> reset();
 
     for (std::string textureID : m_textureIDList){
         TextureManager::Instance() ->clearFromTextureMap(textureID);
     }
-
     std::cout << "Exiting MenuState" << std::endl;
     return true;
 }

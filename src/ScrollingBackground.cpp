@@ -1,6 +1,6 @@
 #include "ScrollingBackground.h"
 
-void ScrollingBackground::load(const std::unique_ptr<LoaderParams> &pParams) {
+void ScrollingBackground::load(const LoaderParams* pParams) {
     ShooterObject::load(pParams);
     m_scrollSpeed = pParams -> getAnimSpeed();
 

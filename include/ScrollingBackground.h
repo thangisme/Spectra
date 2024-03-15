@@ -12,7 +12,7 @@ public:
     virtual void update();
     virtual void clean();
 
-    virtual void load(std::unique_ptr<LoaderParams> const& pParams);
+    virtual void load(const LoaderParams* pParams);
 private:
     int m_scrollSpeed;
 

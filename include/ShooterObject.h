@@ -10,8 +10,7 @@ class ShooterObject : public GameObject
 {
 public:
     virtual ~ShooterObject() {}
-    virtual void load(std::unique_ptr<LoaderParams> const
-                      &pParams);
+    virtual void load(const LoaderParams* pParams);
     virtual void draw();
     virtual void update();
     virtual void clean() {}

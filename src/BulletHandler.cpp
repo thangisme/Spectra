@@ -16,14 +16,14 @@ BulletHandler* BulletHandler::Instance() {
 void BulletHandler::addPlayerBullet(int x, int y, int width, int height, std::string textureID, int numFrames,
                                     Vector2D heading) {
     PlayerBullet* pPlayerBullet = new PlayerBullet();
-    pPlayerBullet ->load(std::unique_ptr<LoaderParams> (new LoaderParams(x, y, width, height, textureID, numFrames)), heading);
+    pPlayerBullet ->load(new LoaderParams(x, y, width, height, textureID, numFrames), heading);
     m_playerBullets.push_back(pPlayerBullet);
 }
 
 void BulletHandler::addEnemyBullet(int x, int y, int width, int height, std::string textureID, int numFrames,
                                    Vector2D heading) {
     EnemyBullet* pEnemyBullet = new EnemyBullet();
-    pEnemyBullet ->load(std::unique_ptr<LoaderParams> (new LoaderParams(x, y, width, height, textureID, numFrames)), heading);
+    pEnemyBullet ->load(new LoaderParams(x, y, width, height, textureID, numFrames), heading);
     m_playerBullets.push_back(pEnemyBullet);
 }
 
@@ -59,12 +59,12 @@ void BulletHandler::updateBullets() {
     }
 }
 
-const std::vector<std::shared_ptr<EnemyBullet>> BulletHandler::getEnemyBullets() {
-    return std::vector<std::shared_ptr<EnemyBullet>>();
+const std::vector<EnemyBullet*> BulletHandler::getEnemyBullets() {
+    return std::vector<EnemyBullet*>();
 }
 
-const std::vector<std::shared_ptr<PlayerBullet>> BulletHandler::getPlayerBullets() {
-    return std::vector<std::shared_ptr<PlayerBullet>>();
+const std::vector<PlayerBullet*> BulletHandler::getPlayerBullets() {
+    return std::vector<PlayerBullet*>();
 }
 
 void BulletHandler::drawBullets() {
