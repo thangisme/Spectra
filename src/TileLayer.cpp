@@ -9,7 +9,7 @@ TileLayer::TileLayer(int tileSize, const std::vector<Tileset> &tilesets) : m_til
     m_numRows = Game::Instance()->getGameHeight() / m_tileSize;
 }
 
-void TileLayer::update() {
+void TileLayer::update(Level* pLevel) {
     m_position += m_velocity;
 }
 

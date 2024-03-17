@@ -24,7 +24,7 @@ void BulletHandler::addEnemyBullet(int x, int y, int width, int height, std::str
                                    Vector2D heading) {
     EnemyBullet* pEnemyBullet = new EnemyBullet();
     pEnemyBullet ->load(new LoaderParams(x, y, width, height, textureID, numFrames), heading);
-    m_playerBullets.push_back(pEnemyBullet);
+    m_enemyBullets.push_back(pEnemyBullet);
 }
 
 void BulletHandler::updateBullets() {
@@ -60,11 +60,11 @@ void BulletHandler::updateBullets() {
 }
 
 const std::vector<EnemyBullet*> BulletHandler::getEnemyBullets() {
-    return std::vector<EnemyBullet*>();
+    return m_enemyBullets;
 }
 
 const std::vector<PlayerBullet*> BulletHandler::getPlayerBullets() {
-    return std::vector<PlayerBullet*>();
+    return m_playerBullets;
 }
 
 void BulletHandler::drawBullets() {

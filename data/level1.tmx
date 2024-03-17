@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="150" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="5">
+ <properties>
+  <property name="turret" value="assets/objects/turret.png"/>
+  <property name="warrior" value="assets/objects/warrior.png"/>
+  <property name="bullet" value="assets/objects/bullet.png" />
+ </properties>
+ <tileset firstgid="1" name="map1_tileset" tilewidth="16" tileheight="16" tilecount="264" columns="24">
+  <image source="assets/tilesets/map1_tileset.png" width="384" height="176"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="150" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt0ktKA1EURdEalsaWEtL2MwUbaqaQRqlTsOFnEmom6GkLAYNeHzesBbtZ1LnwpgkAAAAAAAAAAAAAAAAAAAAAAAAAqHKUjtMinQzeUq3rrR13n6eLdJmuBm+p1vXWjrtv0m26S+vBW6p1vbXj7jndp4f0OHZKuXnqees89dv9nF7Sa3obvKVa11tH7l5+66fe00f6TNs9/3mazvb8ZpfVjv7Sb24d6T93X0sFbaSCnqSCRr9rHWaj37UOsy+BEJ2r
+  </data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="1" type="Player" x="102" y="446" width="192" height="192">
+   <properties>
+    <property name="numFrames" type="int" value="6"/>
+    <property name="textureHeight" type="int" value="192"/>
+    <property name="textureID" value="warrior"/>
+    <property name="textureWidth" type="int" value="192"/>
+   </properties>
+  </object>
+  <object id="4" type="Turret" x="662" y="580" width="60" height="60">
+   <properties>
+    <property name="numFrames" type="int" value="0"/>
+    <property name="textureHeight" type="int" value="60"/>
+    <property name="textureID" value="turret"/>
+    <property name="textureWidth" type="int" value="60"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

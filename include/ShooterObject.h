@@ -15,7 +15,7 @@ public:
     virtual void update();
     virtual void clean() {}
     virtual void collision() {}
-    virtual std::string type() { return "SDLGameObject"; }
+    virtual std::string type() { return "ShooterObject"; }
 protected:
     ShooterObject();
     void doDyingAnimation();

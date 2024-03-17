@@ -96,3 +96,7 @@ void Player::handleAnimation() {
 
     m_currentFrame = int(((SDL_GetTicks() / (100)) % m_numFrames));
 }
+
+void Player::collision() {
+    Game::Instance()->quit();
+}

@@ -3,10 +3,12 @@
 
 #include <vector>
 
+class Level;
+
 class Layer {
 public:
     virtual void render() = 0;
-    virtual void update() = 0;
+    virtual void update(Level* pLevel) = 0;
 
     std::vector<Layer*> getLayers() { return m_layers; }
 protected:
