@@ -141,6 +141,8 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
 
             e->QueryIntAttribute("x", &x);
             e->QueryIntAttribute("y", &y);
+            e->QueryIntAttribute("width", &width);
+            e->QueryIntAttribute("height", &height);
 
             GameObject *pGameObject = GameObjectFactory::Instance()->create(e->Attribute("type"));
 
@@ -153,14 +155,8 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
                             if (property->Attribute("name") == std::string("numFrames")) {
                                 property->QueryIntAttribute("value", &numFrames);
                             } else if (property->Attribute("name") ==
-                                       std::string("textureHeight")) {
-                                property->QueryIntAttribute("value", &height);
-                            } else if (property->Attribute("name") ==
                                        std::string("textureID")) {
                                 textureID = property->Attribute("value");
-                            } else if (property->Attribute("name") ==
-                                       std::string("textureWidth")) {
-                                property->QueryIntAttribute("value", &width);
                             } else if (property->Attribute("name") ==
                                        std::string("callbackID")) {
                                 property->QueryIntAttribute("value", &callbackID);
