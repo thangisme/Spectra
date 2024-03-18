@@ -84,7 +84,6 @@ void Game::handleEvents() {
 
 void Game::update() {
     m_pGameStateManager->update();
-    if (m_playerLives == 0) m_pGameStateManager->changeState(new GameOverState());
 }
 
 void Game::setPlayerLives(int lives) { m_playerLives = lives; }

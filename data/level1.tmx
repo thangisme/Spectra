@@ -4,6 +4,7 @@
   <property name="turret" value="assets/objects/turret.png"/>
   <property name="warrior" value="assets/objects/warrior.png"/>
   <property name="bullet" value="assets/objects/bullet.png" />
+  <property name="lives" value="assets/objects/lives.png" />
  </properties>
  <tileset firstgid="1" name="map1_tileset" tilewidth="16" tileheight="16" tilecount="264" columns="24">
   <image source="assets/tilesets/map1_tileset.png" width="384" height="176"/>

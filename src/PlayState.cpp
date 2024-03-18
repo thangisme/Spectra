@@ -19,18 +19,22 @@ void PlayState::update() {
     if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_ESCAPE)) {
         Game::Instance() -> getStateManager() ->pushState(new PauseState());
     }
-    for (auto& obj : m_gameObjects) {
-        obj -> update();
-    }
+
+    BulletHandler::Instance()->updateBullets();
 
     pLevel -> update();
 
-    BulletHandler::Instance()->updateBullets();
+    if (Game::Instance() -> getPlayerLives() == 0) {
+        Game::Instance() -> getStateManager() ->changeState(new GameOverState());
+    }
 }
 
 void PlayState::render() {
     pLevel ->render();
     BulletHandler::Instance()->drawBullets();
+    for (int i = 0; i < Game::Instance() -> getPlayerLives(); i++) {
+        TextureManager::Instance() ->drawFrame("lives", 40 * i, 0, 32, 32, 0, 0, Game::Instance() -> getRenderer());
+    }
 }
 
 bool PlayState::onEnter() {

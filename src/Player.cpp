@@ -2,7 +2,9 @@
 #include "InputHandler.h"
 #include "BulletHandler.h"
 
-Player::Player() : ShooterObject(){}
+Player::Player() : ShooterObject(), m_invulnerable(false),
+                   m_invulnerableTime(100),
+                   m_invulnerableCounter(0){}
 
 void Player::load(const LoaderParams* pParams) {
     ShooterObject::load(pParams);
@@ -11,7 +13,7 @@ void Player::load(const LoaderParams* pParams) {
 
     m_bulletCounter = m_bulletFiringSpeed;
 
-    m_dyingTime = 100;
+    m_dyingTime = 50;
 }
 
 void Player::draw() {
@@ -85,7 +87,7 @@ void Player::resurrect() {
     m_position.setY(200);
     m_bDying = false;
 
-    m_textureID = "Player";
+    m_textureID = "warrior";
 
     m_currentFrame = 0;
     m_numFrames = 6;
@@ -126,5 +128,12 @@ void Player::handleAnimation() {
 }
 
 void Player::collision() {
-    m_bDying = true;
+    if (!m_invulnerable && !Game::Instance() -> getLevelComplete()) {
+        m_textureID = "warrior";
+        m_currentFrame = 0;
+        m_numFrames = 6;
+        m_width = 192;
+        m_height = 192;
+        m_bDying = true;
+    }
 }
