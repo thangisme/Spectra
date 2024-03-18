@@ -53,7 +53,8 @@ protected:
                    m_bDead(false),
                    m_bDying(false),
                    m_angle(0),
-                   m_alpha(255) {}
+                   m_alpha(255),
+                   m_scaleFactor(1){}
 
     Vector2D m_position;
     Vector2D m_velocity;
@@ -61,6 +62,7 @@ protected:
 
     int m_width;
     int m_height;
+    int m_scaleFactor;
 
     int m_currentRow;
     int m_currentFrame;

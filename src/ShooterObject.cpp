@@ -35,11 +35,11 @@ void ShooterObject::doDyingAnimation() {
 void ShooterObject::draw() {
     if (m_velocity.getX() < 0) {
         TextureManager::Instance()->drawFrame(m_textureID, m_position.getX(), m_position.getY(), m_width, m_height,
-                                              m_currentRow, m_currentFrame, Game::Instance()->getRenderer(),
+                                              m_currentRow, m_currentFrame, Game::Instance()->getRenderer(),0, m_alpha, m_scaleFactor,
                                               SDL_FLIP_HORIZONTAL);
     } else {
         TextureManager::Instance()->drawFrame(m_textureID, m_position.getX(), m_position.getY(), m_width, m_height,
-                                              m_currentRow, m_currentFrame, Game::Instance()->getRenderer());
+                                              m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), 0, m_alpha, m_scaleFactor);
     }
 }
 

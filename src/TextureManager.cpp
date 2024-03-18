@@ -22,7 +22,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer *pR
     return false;
 }
 
-void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer *pRenderer,
+void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer *pRenderer, int scaleFactor,
                           SDL_RendererFlip flip) {
     SDL_Rect srcRect;
     SDL_Rect destRect;
@@ -33,12 +33,14 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
     srcRect.h = destRect.h = height;
     destRect.x = x;
     destRect.y = y;
+    destRect.w *= scaleFactor;
+    destRect.h *= scaleFactor;
 
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
 void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame,
-                               SDL_Renderer *pRenderer, double angle, int alpha, SDL_RendererFlip flip) {
+                               SDL_Renderer *pRenderer, double angle, int alpha, int scaleFactor, SDL_RendererFlip flip) {
     SDL_Rect srcRect;
     SDL_Rect destRect;
 
@@ -48,6 +50,8 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
     srcRect.h = destRect.h = height;
     destRect.x = x;
     destRect.y = y;
+    destRect.w *= scaleFactor;
+    destRect.h *= scaleFactor;
 
     SDL_SetTextureAlphaMod(m_textureMap[id], alpha);
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, angle, 0, flip);
