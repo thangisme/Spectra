@@ -21,6 +21,8 @@ public:
         m_tileSize = tileSize;
     }
 
+    void setMapWidth(int mapWidth) { m_mapWidth = mapWidth; }
+
     Tileset getTilesetByID(int tileID);
 
     int getTileSize() const { return m_tileSize; }
@@ -33,6 +35,8 @@ private:
 
     Vector2D m_position;
     Vector2D m_velocity;
+
+    int m_mapWidth;
 
     const std::vector<Tileset> &m_tilesets;
 

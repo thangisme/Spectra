@@ -118,6 +118,7 @@ void LevelParser::parseTileLayer(tinyxml2::XMLElement* pTileElement, std::vector
     }
 
     pTileLayer->setTileIDs(data);
+    pTileLayer->setMapWidth(m_width);
 
     if (collidable) {
         pCollisionLayers -> push_back(pTileLayer);

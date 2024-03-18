@@ -12,7 +12,17 @@ void ObjectLayer::update(Level* pLevel) {
     }
 
     for (auto& obj : m_gameObjects) {
-        obj -> update();
+        if (obj -> getPosition().getX() <= Game::Instance() -> getGameWidth()) {
+            obj ->setUpdating(true);
+            obj -> update();
+        } else {
+            if (obj -> type() != std::string("Player")) {
+                obj ->setUpdating(false);
+                obj ->scroll(Game::Instance() -> getScrollSpeed());
+            } else {
+                obj -> update();
+            }
+        }
     }
 }
 
