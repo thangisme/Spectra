@@ -38,6 +38,7 @@ void PlayState::render() {
 }
 
 bool PlayState::onEnter() {
+    Game::Instance() ->setPlayerLives(3);
     LevelParser levelParser;
     pLevel = levelParser.parseLevel("data/level1.tmx");
 
@@ -55,6 +56,8 @@ bool PlayState::onExit() {
     for (std::string textureID : m_textureIDList) {
         TextureManager::Instance() ->clearFromTextureMap(textureID);
     }
+
+    BulletHandler::Instance() -> clearBullets();
 
     std::cout << "Exiting PlayState" << std::endl;
     return true;
