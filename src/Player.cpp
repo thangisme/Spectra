@@ -1,10 +1,17 @@
 #include "Player.h"
 #include "InputHandler.h"
+#include "BulletHandler.h"
 
 Player::Player() : ShooterObject(){}
 
 void Player::load(const LoaderParams* pParams) {
     ShooterObject::load(pParams);
+    m_moveSpeed = 5;
+    m_bulletFiringSpeed = 13;
+
+    m_bulletCounter = m_bulletFiringSpeed;
+
+    m_dyingTime = 100;
 }
 
 void Player::draw() {
@@ -48,6 +55,27 @@ void Player::clean() {
 }
 
 void Player::handleInput() {
+    if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_UP) && m_position.getY() > 0) {
+        m_velocity.setY(-m_moveSpeed);
+    } else if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_DOWN) && m_position.getY() + m_height < Game::Instance() -> getGameHeight()) {
+        m_velocity.setY(+m_moveSpeed);
+    }
+
+    if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_LEFT) && m_position.getX() > 0) {
+        m_velocity.setX(-m_moveSpeed);
+    } else if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_RIGHT) && m_position.getX() + m_width < Game::Instance() -> getGameWidth()) {
+        m_velocity.setX(+m_moveSpeed);
+    }
+
+    if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_SPACE)) {
+        if (m_bulletCounter == m_bulletFiringSpeed) {
+            BulletHandler::Instance() ->addPlayerBullet(m_position.getX() + m_width, m_position.getY(), 16, 16, "bullet", 1, Vector2D(10, 0));
+            m_bulletCounter = 0;
+        }
+        m_bulletCounter++;
+    } else {
+        m_bulletCounter = m_bulletFiringSpeed;
+    }
 }
 
 void Player::resurrect() {
@@ -98,5 +126,5 @@ void Player::handleAnimation() {
 }
 
 void Player::collision() {
-    Game::Instance()->quit();
+    m_bDying = true;
 }
