@@ -27,9 +27,9 @@ public:
 
     Vector2D &getPosition() { return m_position; }
 
-    int getWidth() { return m_width; }
+    int getWidth() { return m_width * m_scaleFactor; }
 
-    int getHeight() { return m_height; }
+    int getHeight() { return m_height * m_scaleFactor; }
 
     void scroll(float scrollSpeed) { m_position.setX(m_position.getX() - scrollSpeed); }
 
