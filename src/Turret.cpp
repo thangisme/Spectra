@@ -1,7 +1,7 @@
 #include "Turret.h"
 #include "BulletHandler.h"
 
-Turret::Turret() : m_dyingTime(1000), m_health(100), m_bulletFiringSpeed(50){}
+Turret::Turret() : m_dyingTime(1000), m_health(10), m_bulletFiringSpeed(50){}
 
 Turret::~Turret(){}
 
