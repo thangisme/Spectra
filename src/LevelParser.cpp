@@ -137,7 +137,7 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
 
     for (tinyxml2::XMLElement *e = pObjectElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
         if (e->Value() == std::string("object")) {
-            int x, y, width, height, numFrames, callbackID, animSpeed;
+            int x, y, width, height, numFrames, callbackID = 0, animSpeed = 1, scaleFactor = 1;
             std::string textureID;
 
             e->QueryIntAttribute("x", &x);
@@ -155,22 +155,22 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
                         if (property->Value() == std::string("property")) {
                             if (property->Attribute("name") == std::string("numFrames")) {
                                 property->QueryIntAttribute("value", &numFrames);
-                            } else if (property->Attribute("name") ==
-                                       std::string("textureID")) {
+                            } else if (property->Attribute("name", "textureID")) {
                                 textureID = property->Attribute("value");
-                            } else if (property->Attribute("name") ==
-                                       std::string("callbackID")) {
+                                std::cout << textureID << std::endl;
+                            } else if (property->Attribute("name", "callbackID")) {
                                 property->QueryIntAttribute("value", &callbackID);
-                            } else if (e->Attribute("name") ==
-                                       std::string("animSpeed")) {
+                            } else if (property->Attribute("name", "animSpeed")) {
                                 property->QueryIntAttribute("value", &animSpeed);
+                            } else if (property->Attribute("name","scaleFactor")) {
+                                property->QueryIntAttribute("value", &scaleFactor);
                             }
                         }
                     }
                 }
             }
 
-            pGameObject ->load(new LoaderParams(x,y, width, height, textureID, numFrames, callbackID, animSpeed));
+            pGameObject ->load(new LoaderParams(x,y, width, height, textureID, numFrames, callbackID, animSpeed, scaleFactor));
             if (pGameObject->type() == "Player") {
                 pLevel ->setPlayer(dynamic_cast<Player*> (pGameObject));
             }
