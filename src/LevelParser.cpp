@@ -157,7 +157,6 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
                                 property->QueryIntAttribute("value", &numFrames);
                             } else if (property->Attribute("name", "textureID")) {
                                 textureID = property->Attribute("value");
-                                std::cout << textureID << std::endl;
                             } else if (property->Attribute("name", "callbackID")) {
                                 property->QueryIntAttribute("value", &callbackID);
                             } else if (property->Attribute("name", "animSpeed")) {
