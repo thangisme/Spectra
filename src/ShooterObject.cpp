@@ -18,6 +18,7 @@ void ShooterObject::load(const LoaderParams* pParams) {
     m_height = pParams->getHeight();
     m_textureID = pParams->getTextureID();
     m_numFrames = pParams->getNumFrames();
+    m_scaleFactor = pParams ->getScaleFactor();
 }
 
 void ShooterObject::doDyingAnimation() {
