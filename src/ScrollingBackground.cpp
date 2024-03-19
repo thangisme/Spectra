@@ -1,5 +1,11 @@
 #include "ScrollingBackground.h"
 
+ScrollingBackground::ScrollingBackground() : ShooterObject()
+{
+    count = 0;
+    maxCount = 10;
+}
+
 void ScrollingBackground::load(const LoaderParams* pParams) {
     ShooterObject::load(pParams);
     m_scrollSpeed = pParams -> getAnimSpeed();
