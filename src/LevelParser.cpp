@@ -7,6 +7,7 @@
 #include "ObjectLayer.h"
 #include <iostream>
 #include <string>
+#include <zlib.h>
 
 Level *LevelParser::parseLevel(const char *levelFile) {
     tinyxml2::XMLDocument levelDoc;
