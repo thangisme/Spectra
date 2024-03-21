@@ -2,15 +2,18 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "Player.h"
-#include "Enemy.h"
 #include "LoaderParams.h"
 #include "ShooterObject.h"
 #include "InputHandler.h"
 #include "PauseState.h"
 #include "GameOverState.h"
-#include "StateParser.h"
 #include "LevelParser.h"
 #include "BulletHandler.h"
+#include "GameObjectFactory.h"
+#include "Turret.h"
+#include "FlyingEnemy.h"
+#include "FloatingEnemy.h"
+#include "Map1Boss.h"
 #include <iostream>
 
 const std::string PlayState::s_playID = "PLAY";
@@ -38,9 +41,14 @@ void PlayState::render() {
 }
 
 bool PlayState::onEnter() {
+    GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
+    GameObjectFactory::Instance()->registerType("Turret", new TurretCreator());
+    GameObjectFactory::Instance()->registerType("FlyingEnemy", new FlyingEnemyCreator());
+    GameObjectFactory::Instance()->registerType("FloatingEnemy", new FloatingEnemyCreator());
+    GameObjectFactory::Instance()->registerType("Map1Boss", new Map1BossCreator());
     Game::Instance() ->setPlayerLives(3);
     LevelParser levelParser;
-    pLevel = levelParser.parseLevel("data/level1.tmx");
+    pLevel = levelParser.parseLevel("data/map1.tmx");
 
     std::cout << "Entering PlayState" << std::endl;
     return true;

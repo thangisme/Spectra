@@ -9,6 +9,8 @@
 #include "GameOverState.h"
 #include "Turret.h"
 #include "ScrollingBackground.h"
+#include "FlyingEnemy.h"
+#include "FloatingEnemy.h"
 
 Game *Game::s_pInstance = 0;
 
@@ -53,8 +55,6 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
 
     GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
     GameObjectFactory::Instance()->registerType("ScrollingBackground", new ScrollingBackgroundCreator());
-    GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
-    GameObjectFactory::Instance()->registerType("Turret", new TurretCreator());
     m_pGameStateManager = new GameStateManager();
     m_pGameStateManager->changeState(new MainMenuState());
 

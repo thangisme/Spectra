@@ -65,6 +65,12 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/CollisionManager.cpp
         include/Turret.h
         src/Turret.cpp
+        include/FlyingEnemy.h
+        src/FlyingEnemy.cpp
+        include/FloatingEnemy.h
+        src/FloatingEnemy.cpp
+        include/Map1Boss.h
+        src/Map1Boss.cpp
 
 )
 
