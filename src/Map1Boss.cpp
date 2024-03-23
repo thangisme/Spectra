@@ -1,7 +1,7 @@
 #include "Map1Boss.h"
 #include "BulletHandler.h"
 
-Map1Boss::Map1Boss() : m_dyingTime(1000), m_health(100), m_bulletFiringSpeed(70), m_moveSpeed(1) {}
+Map1Boss::Map1Boss() : m_dyingTime(50), m_health(100), m_bulletFiringSpeed(70), m_moveSpeed(1) {}
 
 void Map1Boss::load(const LoaderParams *pParams) {
     ShooterObject::load(pParams);
@@ -22,9 +22,9 @@ void Map1Boss::collision() {
         if (!m_bPlayedDeathSound) {
             m_textureID = "explosion";
             m_currentFrame = 0;
-            m_numFrames = 9;
-            m_width = 60;
-            m_height = 60;
+            m_numFrames = 6;
+            m_width = 64;
+            m_height = 64;
             m_bDying = true;
         }
     }

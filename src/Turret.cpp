@@ -1,7 +1,7 @@
 #include "Turret.h"
 #include "BulletHandler.h"
 
-Turret::Turret() : m_dyingTime(1000), m_health(10), m_bulletFiringSpeed(50){}
+Turret::Turret() : m_dyingTime(50), m_health(10), m_bulletFiringSpeed(50){}
 
 Turret::~Turret(){}
 
@@ -23,9 +23,9 @@ void Turret::collision() {
         if (!m_bPlayedDeathSound) {
             m_textureID = "explosion";
             m_currentFrame = 0;
-            m_numFrames = 9;
-            m_width = 60;
-            m_height = 60;
+            m_numFrames = 7;
+            m_width = 64;
+            m_height = 64;
             m_bDying = true;
         }
     }

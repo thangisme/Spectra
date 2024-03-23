@@ -1,7 +1,7 @@
 #include "FlyingEnemy.h"
 #include "BulletHandler.h"
 
-FlyingEnemy::FlyingEnemy() : m_dyingTime(1000), m_health(10), m_bulletFiringSpeed(50){}
+FlyingEnemy::FlyingEnemy() : m_dyingTime(50), m_health(10), m_bulletFiringSpeed(50){}
 
 void FlyingEnemy::update() {
     if (!m_bDying) {
@@ -24,9 +24,9 @@ void FlyingEnemy::collision() {
         if (!m_bPlayedDeathSound) {
             m_textureID = "explosion";
             m_currentFrame = 0;
-            m_numFrames = 9;
-            m_width = 60;
-            m_height = 60;
+            m_numFrames = 7;
+            m_width = 64;
+            m_height = 64;
             m_bDying = true;
         }
     }
