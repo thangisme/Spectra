@@ -1,7 +1,7 @@
 #include "Map1Boss.h"
 #include "BulletHandler.h"
 
-Map1Boss::Map1Boss() : m_dyingTime(50), m_health(100), m_bulletFiringSpeed(70), m_moveSpeed(1) {}
+Map1Boss::Map1Boss() : m_dyingTime(50), m_health(100), m_bulletFiringSpeed(70), m_moveSpeed(1), m_movingLeft(true) {}
 
 void Map1Boss::load(const LoaderParams *pParams) {
     ShooterObject::load(pParams);
@@ -32,7 +32,15 @@ void Map1Boss::collision() {
 
 void Map1Boss::update() {
     if (!m_bDying) {
-        scroll(Game::Instance()->getScrollSpeed());
+        if (m_position.getX() > 0 && m_movingLeft) {
+            scroll(Game::Instance()->getScrollSpeed());
+        } else if (m_position.getX() + m_width * m_scaleFactor >= Game::Instance()->getGameWidth()) {
+            scroll(Game::Instance()->getScrollSpeed());
+            m_movingLeft = true;
+        } else {
+            m_movingLeft = false;
+            scroll(-Game::Instance()->getScrollSpeed());
+        }
 
         if (m_position.getY() + m_height * m_scaleFactor >= Game::Instance()->getGameHeight()) {
             m_velocity.setY(-m_moveSpeed);

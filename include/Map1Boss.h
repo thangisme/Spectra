@@ -19,6 +19,7 @@ protected:
     int m_health;
     int m_bulletFiringSpeed;
     int m_moveSpeed;
+    bool m_movingLeft;
 };
 
 class Map1BossCreator : public BaseCreator {
