@@ -64,14 +64,22 @@ void Player::handleInput() {
     }
 
     if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_LEFT) && m_position.getX() > 0) {
+        setTurnLeft(true);
         m_velocity.setX(-m_moveSpeed);
     } else if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_RIGHT) && m_position.getX() + m_width < Game::Instance() -> getGameWidth()) {
+        setTurnLeft(false);
         m_velocity.setX(+m_moveSpeed);
     }
 
     if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_SPACE)) {
         if (m_bulletCounter == m_bulletFiringSpeed) {
-            BulletHandler::Instance() ->addPlayerBullet(m_position.getX() + m_width, m_position.getY(), 16, 16, "bullet", 1, Vector2D(10, 0));
+            Vector2D bulletHeading(m_bulletFiringSpeed, 0);
+            int tempX = m_position.getX() + m_width * m_scaleFactor / 2;
+            if (isTurnLeft()) {
+                bulletHeading.setX(-m_bulletFiringSpeed);
+                tempX = m_position.getX() - m_width * m_scaleFactor / 2;
+            }
+            BulletHandler::Instance() ->addPlayerBullet(tempX, m_position.getY() + (m_height * m_scaleFactor) / 2, 16, 16, "bullet", 1, bulletHeading);
             m_bulletCounter = 0;
         }
         m_bulletCounter++;
@@ -87,12 +95,13 @@ void Player::resurrect() {
     m_position.setY(200);
     m_bDying = false;
 
-    m_textureID = "warrior";
+    m_textureID = "spectra";
 
     m_currentFrame = 0;
-    m_numFrames = 6;
-    m_width = 192;
-    m_height = 192;
+    m_currentRow = 0;
+    m_numFrames = 2;
+    m_width = 32;
+    m_height = 32;
 
     m_dyingCounter = 0;
     m_invulnerable = true;
@@ -129,11 +138,12 @@ void Player::handleAnimation() {
 
 void Player::collision() {
     if (!m_invulnerable && !Game::Instance() -> getLevelComplete()) {
-        m_textureID = "warrior";
+        m_textureID = "spectra";
         m_currentFrame = 0;
-        m_numFrames = 6;
-        m_width = 192;
-        m_height = 192;
+        m_currentRow = 7;
+        m_numFrames = 8;
+        m_width = 32;
+        m_height = 32;
         m_bDying = true;
     }
 }

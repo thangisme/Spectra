@@ -39,6 +39,10 @@ public:
 
     bool dying() { return m_bDying; }
 
+    bool isTurnLeft() { return m_bTurnLeft; }
+
+    void setTurnLeft(bool turnLeft) { m_bTurnLeft = turnLeft; }
+
     void setUpdating(bool updating) { m_bUpdating = updating; }
 
 protected:
@@ -52,6 +56,7 @@ protected:
                    m_bUpdating(false),
                    m_bDead(false),
                    m_bDying(false),
+                   m_bTurnLeft(false),
                    m_angle(0),
                    m_alpha(255),
                    m_scaleFactor(1){}
@@ -72,6 +77,8 @@ protected:
     bool m_bUpdating;
     bool m_bDead;
     bool m_bDying;
+
+    bool m_bTurnLeft;
 
     double m_angle;
 
