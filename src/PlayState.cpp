@@ -48,7 +48,7 @@ bool PlayState::onEnter() {
     GameObjectFactory::Instance()->registerType("Map1Boss", new Map1BossCreator());
     Game::Instance() ->setPlayerLives(3);
     LevelParser levelParser;
-    pLevel = levelParser.parseLevel("data/map1.tmx");
+    pLevel = levelParser.parseLevel("data/map1_new.tmx");
 
     std::cout << "Entering PlayState" << std::endl;
     return true;

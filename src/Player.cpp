@@ -100,8 +100,8 @@ void Player::resurrect() {
     m_currentFrame = 0;
     m_currentRow = 0;
     m_numFrames = 2;
-    m_width = 32;
-    m_height = 32;
+    m_width = 64;
+    m_height = 64;
 
     m_dyingCounter = 0;
     m_invulnerable = true;
@@ -142,8 +142,8 @@ void Player::collision() {
         m_currentFrame = 0;
         m_currentRow = 7;
         m_numFrames = 8;
-        m_width = 32;
-        m_height = 32;
+        m_width = 64;
+        m_height = 64;
         m_bDying = true;
     }
 }

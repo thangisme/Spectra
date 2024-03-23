@@ -5,7 +5,7 @@
    <property name="bullet" value="assets/objects/bullet.png" />
    <property name="lives" value="assets/objects/lives.png" />
    <property name="spectra" value="assets/objects/spectra.png" />
-   <property name="sky_bg" value="assets/objects/sky_bg.png" />
+   <property name="sky_bg" value="assets/ui/sky_bg.png" />
    <property name="explosion" value="assets/objects/explosions.png" />
   </properties>
  <tileset firstgid="1" name="modular-tileset" tilewidth="16" tileheight="16" tilecount="391" columns="23">
