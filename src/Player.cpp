@@ -9,7 +9,7 @@ Player::Player() : ShooterObject(), m_invulnerable(false),
 void Player::load(const LoaderParams* pParams) {
     ShooterObject::load(pParams);
     m_moveSpeed = 5;
-    m_bulletFiringSpeed = 35;
+    m_bulletFiringSpeed = 20;
 
     m_bulletCounter = m_bulletFiringSpeed;
 
