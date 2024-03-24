@@ -19,7 +19,7 @@ public:
         ShooterObject::draw();
     }
 
-    virtual void collistion() {
+    virtual void collision() {
         m_bDead = true;
     }
 
