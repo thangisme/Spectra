@@ -165,8 +165,8 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
                                 property->QueryIntAttribute("value", &animSpeed);
                             } else if (property->Attribute("name","scaleFactor")) {
                                 property->QueryIntAttribute("value", &scaleFactor);
-                            } else if (property ->Attribute("name", "isTurnLeft") && property ->Attribute("value", "true")) {
-                                isTurnLeft = true;
+                            } else if (property ->Attribute("name", "isTurnLeft")) {
+                                property->QueryBoolAttribute("value", &isTurnLeft);
                             }
                         }
                     }
