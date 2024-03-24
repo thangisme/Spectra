@@ -9,7 +9,7 @@ Player::Player() : ShooterObject(), m_invulnerable(false),
 void Player::load(const LoaderParams* pParams) {
     ShooterObject::load(pParams);
     m_moveSpeed = 5;
-    m_bulletFiringSpeed = 15;
+    m_bulletFiringSpeed = 35;
 
     m_bulletCounter = m_bulletFiringSpeed;
 
@@ -73,10 +73,10 @@ void Player::handleInput() {
 
     if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_SPACE)) {
         if (m_bulletCounter == m_bulletFiringSpeed) {
-            Vector2D bulletHeading(m_bulletFiringSpeed, 0);
+            Vector2D bulletHeading(12, 0);
             int tempX = m_position.getX() + m_width * m_scaleFactor / 2;
             if (isTurnLeft()) {
-                bulletHeading.setX(-m_bulletFiringSpeed);
+                bulletHeading.setX(-12);
                 tempX = m_position.getX() - m_width * m_scaleFactor / 2;
             }
             BulletHandler::Instance() ->addPlayerBullet(tempX, m_position.getY() + (m_height * m_scaleFactor) / 2, 16, 16, "playerBullet", 1, bulletHeading);
