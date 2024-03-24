@@ -20,6 +20,7 @@ void ShooterObject::load(const LoaderParams* pParams) {
     m_textureID = pParams->getTextureID();
     m_numFrames = pParams->getNumFrames();
     m_scaleFactor = pParams ->getScaleFactor();
+    m_bTurnLeft = pParams ->isTurnLeft();
 }
 
 void ShooterObject::doDyingAnimation() {
