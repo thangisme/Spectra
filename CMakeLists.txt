@@ -80,9 +80,6 @@ add_executable(${PROJECT_NAME} src/main.cpp
 
 # --- SDL2 SETUP ---
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
-set(SDL2_PATH "SDL2/x86_64-w64-mingw32")
-set(SDL2_IMAGE_PATH "SDL2/x86_64-w64-mingw32")
-set(SDL2_MIXER_PATH "SDL2/x86_64-w64-mingw32")
 
 #Locate ZLib library
 find_package(ZLIB REQUIRED)
