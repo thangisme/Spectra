@@ -2,7 +2,7 @@
 #define PLATFORMER_GAMESTATEMANAGER_H
 
 #include <vector>
-#include "GameState.h"
+#include "GameState/GameState.h"
 
 class GameStateManager {
 public:

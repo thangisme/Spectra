@@ -20,28 +20,28 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/Vector2D.cpp
         include/InputHandler.h
         src/InputHandler.cpp
-        include/GameState.h
-        include/MainMenuState.h
-        src/MainMenuState.cpp
-        include/PlayState.h
-        src/PlayState.cpp
-        include/GameStateManager.h
-        src/GameStateManager.cpp
+        include/GameState/GameState.h
+        include/GameState/MainMenuState.h
+        src/GameState/MainMenuState.cpp
+        include/GameState/PlayState.h
+        src/GameState/PlayState.cpp
+        include/GameState/GameStateManager.h
+        src/GameState/GameStateManager.cpp
         include/MenuButton.h
         src/MenuButton.cpp
-        include/PauseState.h
-        src/PauseState.cpp
-        include/GameOverState.h
-        src/GameOverState.cpp
+        include/GameState/PauseState.h
+        src/GameState/PauseState.cpp
+        include/GameState/GameOverState.h
+        src/GameState/GameOverState.cpp
         include/GameObjectFactory.h
         src/GameObjectFactory.cpp
-        include/StateParser.h
+        include/GameState/StateParser.h
         src/StateParser.cpp
-        include/MenuState.h
-        include/tinyxml2.cpp
-        include/tinyxml2.h
-        include/base64.cpp
-        include/base64.h
+        include/GameState/MenuState.h
+        include/Libraries/tinyxml2.cpp
+        include/Libraries/tinyxml2.h
+        include/Libraries/base64.cpp
+        include/Libraries/base64.h
         include/Level.h
         include/Layer.h
         src/Level.cpp
@@ -63,18 +63,18 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/BulletHandler.cpp
         include/CollisionManager.h
         src/CollisionManager.cpp
-        include/Turret.h
-        src/Turret.cpp
-        include/FlyingEnemy.h
-        src/FlyingEnemy.cpp
-        include/FloatingEnemy.h
-        src/FloatingEnemy.cpp
-        include/Map1Boss.h
-        src/Map1Boss.cpp
-        include/WinState.h
-        src/WinState.cpp
-        include/LevelCompletedState.h
-        src/LevelCompletedState.cpp
+        include/Enemies/Turret.h
+        src/Enemies/Turret.cpp
+        include/Enemies/FlyingEnemy.h
+        src/Enemies/FlyingEnemy.cpp
+        include/Enemies/FloatingEnemy.h
+        src/Enemies/FloatingEnemy.cpp
+        include/Enemies/Map1Boss.h
+        src/Enemies/Map1Boss.cpp
+        include/GameState/WinState.h
+        src/GameState/WinState.cpp
+        include/GameState/LevelCompletedState.h
+        src/GameState/LevelCompletedState.cpp
 
 )
 

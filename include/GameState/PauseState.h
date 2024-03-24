@@ -3,7 +3,7 @@
 
 
 #include <vector>
-#include "MenuState.h"
+#include "GameState/MenuState.h"
 #include "GameObject.h"
 
 class PauseState : public MenuState {

@@ -1,8 +1,8 @@
 #ifndef PLATFORMER_LEVELPARSER_H
 #define PLATFORMER_LEVELPARSER_H
 
-#include "tinyxml2.h"
-#include "base64.h"
+#include "Libraries/tinyxml2.h"
+#include "Libraries/base64.h"
 #include "zlib.h"
 #include <vector>
 

@@ -1,20 +1,20 @@
 #include <iostream>
 #include "Game.h"
 #include "InputHandler.h"
-#include "PlayState.h"
-#include "MainMenuState.h"
+#include "GameState/PlayState.h"
+#include "GameState/MainMenuState.h"
 #include "GameObjectFactory.h"
 #include "Player.h"
 #include "MenuButton.h"
-#include "GameOverState.h"
-#include "Turret.h"
+#include "GameState/GameOverState.h"
+#include "Enemies/Turret.h"
 #include "ScrollingBackground.h"
-#include "FlyingEnemy.h"
-#include "FloatingEnemy.h"
+#include "Enemies/FlyingEnemy.h"
+#include "Enemies/FloatingEnemy.h"
 #include "SoundManager.h"
 #include "AnimatedGraphic.h"
-#include "LevelCompletedState.h"
-#include "WinState.h"
+#include "GameState/LevelCompletedState.h"
+#include "GameState/WinState.h"
 
 Game *Game::s_pInstance = 0;
 

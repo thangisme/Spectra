@@ -1,7 +1,7 @@
 #ifndef PLATFORMER_MAINMENUSTATE_H
 #define PLATFORMER_MAINMENUSTATE_H
 
-#include "MenuState.h"
+#include "GameState/MenuState.h"
 #include "GameObject.h"
 
 class MainMenuState : public MenuState {

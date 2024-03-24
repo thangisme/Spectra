@@ -1,30 +1,30 @@
-#include "WinState.h"
+#include "GameState/LevelCompletedState.h"
 #include "TextureManager.h"
 #include "Game.h"
 #include "MenuButton.h"
-#include "MainMenuState.h"
-#include "PlayState.h"
-#include "StateParser.h"
+#include "GameState/MainMenuState.h"
+#include "GameState/PlayState.h"
+#include "GameState/StateParser.h"
 #include "SoundManager.h"
 #include <iostream>
 
-const std::string WinState::s_winID = "WIN";
+const std::string LevelCompletedState::s_completedID = "LEVELCOMPLETED";
 
-void WinState::update() {
+void LevelCompletedState::update() {
     for (auto& obj : m_gameObjects) {
         obj -> update();
     }
 }
 
-void WinState::render() {
+void LevelCompletedState::render() {
     for (auto& obj : m_gameObjects) {
         obj -> draw();
     }
 }
 
-bool WinState::onEnter() {
+bool LevelCompletedState::onEnter() {
     StateParser stateParser;
-    stateParser.parseState("data/states.xml", s_winID, &m_gameObjects,&m_textureIDList);
+    stateParser.parseState("data/states.xml", s_completedID, &m_gameObjects,&m_textureIDList);
 
     m_callbacks.push_back(0);
     m_callbacks.push_back(s_ToMain);
@@ -34,11 +34,11 @@ bool WinState::onEnter() {
 
     SoundManager::Instance()->playMusic("introMusic", -1);
 
-    std::cout << "Entering WinState" << std::endl;
+    std::cout << "Entering LevelCompletedState" << std::endl;
     return true;
 }
 
-void WinState::setCallbacks(const std::vector<Callback> &callbacks) {
+void LevelCompletedState::setCallbacks(const std::vector<Callback> &callbacks) {
     for (int i = 0; i < m_gameObjects.size(); i++) {
         if (dynamic_cast<MenuButton*> (m_gameObjects[i])) {
             MenuButton* pButton = dynamic_cast<MenuButton*> (m_gameObjects[i]);
@@ -47,7 +47,7 @@ void WinState::setCallbacks(const std::vector<Callback> &callbacks) {
     }
 }
 
-bool WinState::onExit() {
+bool LevelCompletedState::onExit() {
     for (auto& obj : m_gameObjects) {
         obj -> clean();
     }
@@ -58,15 +58,15 @@ bool WinState::onExit() {
         TextureManager::Instance() ->clearFromTextureMap(textureID);
     }
 
-    std::cout << "Exiting WinState" << std::endl;
+    std::cout << "Exiting LevelCompletedState" << std::endl;
     return true;
 }
 
-void WinState::s_ToMain() {
+void LevelCompletedState::s_ToMain() {
     SDL_Delay(1000);
     Game::Instance() -> getStateManager() ->changeState(new MainMenuState());
 }
 
-void WinState::s_restartPlay() {
+void LevelCompletedState::s_restartPlay() {
     Game::Instance() -> getStateManager() ->changeState(new PlayState());
 }

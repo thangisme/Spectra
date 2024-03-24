@@ -1,4 +1,4 @@
-#include "Map1Boss.h"
+#include "Enemies/Map1Boss.h"
 #include "BulletHandler.h"
 
 Map1Boss::Map1Boss() : m_dyingTime(5000), m_health(100), m_bulletFiringSpeed(70), m_moveSpeed(1), m_movingLeft(true) {}

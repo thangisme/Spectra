@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <vector>
-#include "GameStateManager.h"
+#include "GameState/GameStateManager.h"
 #include "GameObject.h"
 #include "ShooterObject.h"
 #include "TextureManager.h"

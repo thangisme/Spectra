@@ -2,7 +2,7 @@
 #define PLATFORMER_MENUSTATE_H
 
 #include <vector>
-#include "GameState.h"
+#include "GameState/GameState.h"
 
 class MenuState : public GameState {
 protected:

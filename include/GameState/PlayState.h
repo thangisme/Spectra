@@ -2,7 +2,7 @@
 #define PLATFORMER_PLAYSTATE_H
 
 #include <vector>
-#include "GameState.h"
+#include "GameState/GameState.h"
 #include "GameObject.h"
 #include "Level.h"
 

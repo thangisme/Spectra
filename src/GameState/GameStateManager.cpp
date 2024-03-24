@@ -1,4 +1,4 @@
-#include "GameStateManager.h"
+#include "GameState/GameStateManager.h"
 #include <iostream>
 void GameStateManager::pushState(GameState *pState) {
     m_gameStates.push_back(pState);

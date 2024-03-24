@@ -1,4 +1,4 @@
-#include "FlyingEnemy.h"
+#include "Enemies/FlyingEnemy.h"
 #include "BulletHandler.h"
 
 FlyingEnemy::FlyingEnemy() : m_dyingTime(50), m_health(10), m_bulletFiringSpeed(100){}

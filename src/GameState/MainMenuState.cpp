@@ -1,9 +1,9 @@
-#include "MainMenuState.h"
+#include "GameState/MainMenuState.h"
 #include "TextureManager.h"
 #include "Game.h"
 #include "MenuButton.h"
-#include "PlayState.h"
-#include "StateParser.h"
+#include "GameState/PlayState.h"
+#include "GameState/StateParser.h"
 #include "InputHandler.h"
 #include "SoundManager.h"
 #include <iostream>
