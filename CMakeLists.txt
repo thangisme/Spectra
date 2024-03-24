@@ -71,6 +71,10 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/FloatingEnemy.cpp
         include/Map1Boss.h
         src/Map1Boss.cpp
+        include/WinState.h
+        src/WinState.cpp
+        include/LevelCompletedState.h
+        src/LevelCompletedState.cpp
 
 )
 

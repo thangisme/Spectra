@@ -46,4 +46,36 @@
             <object type="MenuButton" x="496" y="470" width="288" height="96" textureID="restartbutton" numFrames="0" callbackID="2"/>
         </OBJECTS>
     </GAMEOVER>
+
+    <LEVELCOMPLETED>
+        <TEXTURES>
+            <texture filename="assets/ui/sky_bg.png" ID="background"/>
+            <texture filename="assets/ui/mainMenuBtn.png" ID="mainbutton"/>
+            <texture filename="assets/ui/nextLevelBtn.png" ID="nextBtn"/>
+            <texture filename="assets/ui/levelCompleted.png" ID="completed"/>
+        </TEXTURES>
+
+        <OBJECTS>
+            <object type="ScrollingBackground" x="0" y="0" width="1280" height="720" textureID="background" numFrames="0" animSpeed="2"/>
+            <object type="AnimatedGraphic" x="310" y="100" width="661" height="251" textureID="completed" numFrames="1" animSpeed="2"/>
+            <object type="MenuButton" x="496" y="350" width="288" height="96" textureID="nextBtn" numFrames="0" callbackID="2"/>
+            <object type="MenuButton" x="496" y="470" width="288" height="96" textureID="mainbutton" numFrames="0" callbackID="1"/>
+        </OBJECTS>
+    </LEVELCOMPLETED>
+
+    <WIN>
+        <TEXTURES>
+            <texture filename="assets/ui/sky_bg.png" ID="background"/>
+            <texture filename="assets/ui/mainMenuBtn.png" ID="mainbutton"/>
+            <texture filename="assets/ui/restartBtn.png" ID="restartbutton"/>
+            <texture filename="assets/ui/youwin.png" ID="youwin"/>
+        </TEXTURES>
+
+        <OBJECTS>
+            <object type="ScrollingBackground" x="0" y="0" width="1280" height="720" textureID="background" numFrames="0" animSpeed="2"/>
+            <object type="AnimatedGraphic" x="475" y="100" width="329" height="240" textureID="youwin" numFrames="1" animSpeed="2"/>
+            <object type="MenuButton" x="496" y="350" width="288" height="96" textureID="mainbutton" numFrames="0" callbackID="1"/>
+            <object type="MenuButton" x="496" y="470" width="288" height="96" textureID="restartbutton" numFrames="0" callbackID="2"/>
+        </OBJECTS>
+    </WIN>
 </States>

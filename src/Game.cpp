@@ -13,6 +13,8 @@
 #include "FloatingEnemy.h"
 #include "SoundManager.h"
 #include "AnimatedGraphic.h"
+#include "LevelCompletedState.h"
+#include "WinState.h"
 
 Game *Game::s_pInstance = 0;
 
@@ -66,6 +68,9 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     m_pGameStateManager = new GameStateManager();
     m_pGameStateManager->changeState(new MainMenuState());
 
+    m_levelFiles.push_back("data/map1.tmx");
+    m_currentLevel = 1;
+
     return true;
 }
 
@@ -102,7 +107,12 @@ int Game::getPlayerLives() { return m_playerLives; }
 
 void Game::setCurrentLevel(int currentLevel) {
     m_currentLevel = currentLevel;
-    m_pGameStateManager->changeState(new GameOverState());
+    if (Game::Instance() -> getLevelComplete() && Game::Instance() -> getCurrentLevel() > Game::Instance() -> getLevelFiles().size()) {
+        Game::Instance() -> getStateManager() ->changeState(new WinState());
+        m_currentLevel = 1;
+    } else {
+        m_pGameStateManager->changeState(new LevelCompletedState());
+    }
     m_bLevelComplete = false;
 }
 

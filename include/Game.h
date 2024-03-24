@@ -44,6 +44,8 @@ public:
     void setLevelComplete(bool levelComplete);
     const bool getLevelComplete();
 
+    std::vector<std::string> getLevelFiles() const { return m_levelFiles; };
+
     float getScrollSpeed();
 private:
     Game();
@@ -62,6 +64,8 @@ private:
     int m_currentLevel;
     int m_nextLevel;
     int m_bLevelComplete;
+
+    std::vector<std::string> m_levelFiles;
 
     GameStateManager* m_pGameStateManager;
 };

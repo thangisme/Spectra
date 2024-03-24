@@ -15,6 +15,7 @@
 #include "FloatingEnemy.h"
 #include "Map1Boss.h"
 #include "SoundManager.h"
+#include "WinState.h"
 #include <iostream>
 
 const std::string PlayState::s_playID = "PLAY";
@@ -42,6 +43,7 @@ void PlayState::render() {
 }
 
 bool PlayState::onEnter() {
+
     GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
     GameObjectFactory::Instance()->registerType("Turret", new TurretCreator());
     GameObjectFactory::Instance()->registerType("FlyingEnemy", new FlyingEnemyCreator());
@@ -49,8 +51,8 @@ bool PlayState::onEnter() {
     GameObjectFactory::Instance()->registerType("Map1Boss", new Map1BossCreator());
     Game::Instance() ->setPlayerLives(3);
     LevelParser levelParser;
-    pLevel = levelParser.parseLevel("data/map1.tmx");
-
+    pLevel = levelParser.parseLevel(Game::Instance() -> getLevelFiles()[Game::Instance() -> getCurrentLevel() - 1].c_str());
+    Game::Instance() ->setLevelComplete(false);
     SoundManager::Instance()->playMusic("bgMusic", -1);
 
     std::cout << "Entering PlayState" << std::endl;
