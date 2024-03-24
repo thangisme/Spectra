@@ -12,6 +12,7 @@
 #include "FlyingEnemy.h"
 #include "FloatingEnemy.h"
 #include "SoundManager.h"
+#include "AnimatedGraphic.h"
 
 Game *Game::s_pInstance = 0;
 
@@ -60,6 +61,8 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
 
     GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
     GameObjectFactory::Instance()->registerType("ScrollingBackground", new ScrollingBackgroundCreator());
+    GameObjectFactory::Instance()->registerType("AnimatedGraphic", new AnimatedGraphicCreator());
+
     m_pGameStateManager = new GameStateManager();
     m_pGameStateManager->changeState(new MainMenuState());
 

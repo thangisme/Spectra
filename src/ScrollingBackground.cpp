@@ -1,3 +1,4 @@
+#include <iostream>
 #include "ScrollingBackground.h"
 
 ScrollingBackground::ScrollingBackground() : ShooterObject()

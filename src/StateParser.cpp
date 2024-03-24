@@ -2,7 +2,6 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "GameObjectFactory.h"
-#include <iostream>
 
 bool StateParser::parseState(const char* stateFile, std::string stateID, std::vector<GameObject*> *pObjects, std::vector<std::string> *pTextureIDs) {
     tinyxml2::XMLDocument xmlDoc;
@@ -54,7 +53,7 @@ void StateParser::parseTextures(tinyxml2::XMLElement *pStateRoot, std::vector<st
 
 void StateParser::parseObjects(tinyxml2::XMLElement *pStateRoot, std::vector<GameObject *> *pObjects) {
     for(tinyxml2::XMLElement* e = pStateRoot ->FirstChildElement(); e != NULL; e = e ->NextSiblingElement()) {
-       int x, y, width, height, numFrames, callbackID;
+       int x, y, width, height, numFrames, callbackID, animSpeed;
        std::string textureID;
 
        e ->QueryIntAttribute("x", &x);
@@ -63,11 +62,12 @@ void StateParser::parseObjects(tinyxml2::XMLElement *pStateRoot, std::vector<Gam
        e ->QueryIntAttribute("height", &height);
        e ->QueryIntAttribute("numFrames", &numFrames);
        e ->QueryIntAttribute("callbackID", &callbackID);
+       e ->QueryIntAttribute("animSpeed", &animSpeed);
 
        textureID = e ->Attribute("textureID");
 
        GameObject* pGameObject = GameObjectFactory::Instance() ->create(e ->Attribute("type"));
-       pGameObject ->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID));
+       pGameObject ->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
        pObjects ->push_back(pGameObject);
     }
 }
