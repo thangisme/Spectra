@@ -5,6 +5,7 @@
 #include "MainMenuState.h"
 #include "PlayState.h"
 #include "StateParser.h"
+#include "SoundManager.h"
 #include <iostream>
 
 const std::string GameOverState::s_overID = "GAMEOVER";
@@ -30,6 +31,8 @@ bool GameOverState::onEnter() {
     m_callbacks.push_back(s_restartPlay);
 
     setCallbacks(m_callbacks);
+
+    SoundManager::Instance()->playMusic("introMusic", -1);
 
     std::cout << "Entering GameOverState" << std::endl;
     return true;

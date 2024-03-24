@@ -55,14 +55,13 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     m_bRunning = true;
 
     SoundManager::Instance()->load("assets/sounds/background_music.ogg", "bgMusic", SOUND_MUSIC);
+    SoundManager::Instance()->load("assets/sounds/intro_music.ogg", "introMusic", SOUND_MUSIC);
     SoundManager::Instance()->load("assets/sounds/explosion.wav", "explosion", SOUND_SFX);
 
     GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
     GameObjectFactory::Instance()->registerType("ScrollingBackground", new ScrollingBackgroundCreator());
     m_pGameStateManager = new GameStateManager();
     m_pGameStateManager->changeState(new MainMenuState());
-
-    SoundManager::Instance()->playMusic("bgMusic", -1);
 
     return true;
 }

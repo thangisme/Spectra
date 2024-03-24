@@ -14,6 +14,7 @@
 #include "FlyingEnemy.h"
 #include "FloatingEnemy.h"
 #include "Map1Boss.h"
+#include "SoundManager.h"
 #include <iostream>
 
 const std::string PlayState::s_playID = "PLAY";
@@ -49,6 +50,8 @@ bool PlayState::onEnter() {
     Game::Instance() ->setPlayerLives(3);
     LevelParser levelParser;
     pLevel = levelParser.parseLevel("data/map1.tmx");
+
+    SoundManager::Instance()->playMusic("bgMusic", -1);
 
     std::cout << "Entering PlayState" << std::endl;
     return true;

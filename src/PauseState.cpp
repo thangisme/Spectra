@@ -4,6 +4,7 @@
 #include "MenuButton.h"
 #include "InputHandler.h"
 #include "StateParser.h"
+#include "SoundManager.h"
 #include <iostream>
 
 const std::string PauseState::s_pauseID = "PAUSE";
@@ -13,6 +14,7 @@ void PauseState::s_pauseToMain() {
 }
 
 void PauseState::s_resumePlay() {
+    SoundManager::Instance()->playMusic("bgMusic", -1);
     Game::Instance() -> getStateManager() -> popState();
 }
 
@@ -37,6 +39,8 @@ bool PauseState::onEnter() {
     m_callbacks.push_back(s_resumePlay);
 
     setCallbacks(m_callbacks);
+
+    SoundManager::Instance()->playMusic("introMusic", -1);
 
     std::cout << "Entering PauseState" << std::endl;
     return true;

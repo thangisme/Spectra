@@ -5,6 +5,7 @@
 #include "PlayState.h"
 #include "StateParser.h"
 #include "InputHandler.h"
+#include "SoundManager.h"
 #include <iostream>
 
 const std::string MainMenuState::s_menuID = "MENU";
@@ -29,6 +30,8 @@ bool MainMenuState::onEnter() {
     m_callbacks.push_back(s_exitFromMenu);
 
     setCallbacks(m_callbacks);
+
+    SoundManager::Instance()->playMusic("introMusic", -1);
 
     std::cout << "Entering MenuState" << std::endl;
 
