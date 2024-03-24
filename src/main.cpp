@@ -1,7 +1,7 @@
 #include <SDL.h>
 #include "Game.h"
 
-const char* TITLE = "Platformer";
+const char* TITLE = "Spectra";
 const int WINDOW_WIDTH = 1280;
 const int WINDOW_HEIGHT = 720;
 const int INITIAL_X = SDL_WINDOWPOS_CENTERED;
