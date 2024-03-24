@@ -36,7 +36,7 @@ void PlayState::render() {
     pLevel ->render();
     BulletHandler::Instance()->drawBullets();
     for (int i = 0; i < Game::Instance() -> getPlayerLives(); i++) {
-        TextureManager::Instance() ->drawFrame("lives", 40 * i, 0, 32, 32, 0, 0, Game::Instance() -> getRenderer());
+        TextureManager::Instance() ->drawFrame("lives", 20 + 42 * i, 20, 42, 42, 0, 0, Game::Instance() -> getRenderer());
     }
 }
 
@@ -48,7 +48,7 @@ bool PlayState::onEnter() {
     GameObjectFactory::Instance()->registerType("Map1Boss", new Map1BossCreator());
     Game::Instance() ->setPlayerLives(3);
     LevelParser levelParser;
-    pLevel = levelParser.parseLevel("data/map1_new.tmx");
+    pLevel = levelParser.parseLevel("data/map1.tmx");
 
     std::cout << "Entering PlayState" << std::endl;
     return true;

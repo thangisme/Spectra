@@ -1,7 +1,7 @@
 #include "FlyingEnemy.h"
 #include "BulletHandler.h"
 
-FlyingEnemy::FlyingEnemy() : m_dyingTime(50), m_health(10), m_bulletFiringSpeed(50){}
+FlyingEnemy::FlyingEnemy() : m_dyingTime(50), m_health(10), m_bulletFiringSpeed(100){}
 
 void FlyingEnemy::update() {
     if (!m_bDying) {
@@ -12,6 +12,7 @@ void FlyingEnemy::update() {
             m_bulletCounter = 0;
         }
         m_bulletCounter++;
+        m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);
     } else {
         scroll(Game::Instance() -> getScrollSpeed());
         doDyingAnimation();

@@ -16,6 +16,7 @@ void FloatingEnemy::load(const LoaderParams *pParams) {
 
 void FloatingEnemy::update() {
     scroll(Game::Instance() -> getScrollSpeed());
+    m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);
     if (!m_bDying) {
         if (m_position.getY() + m_height * m_scaleFactor >= Game::Instance() ->getGameHeight()) {
             m_velocity.setY(-m_moveSpeed / 2);

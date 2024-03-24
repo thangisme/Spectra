@@ -1,69 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="150" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="8">
-  <properties>
-   <property name="turret" value="assets/objects/turret.png"/>
-   <property name="bullet" value="assets/objects/bullet.png" />
-   <property name="lives" value="assets/objects/lives.png" />
-   <property name="spectra" value="assets/objects/spectra.png" />
-   <property name="sky_bg" value="assets/ui/sky_bg.png" />
-   <property name="explosion" value="assets/objects/explosions.png" />
-  </properties>
- <tileset firstgid="1" name="modular-tileset" tilewidth="16" tileheight="16" tilecount="391" columns="23">
-  <image source="../../../../Pictures/Sideview Fantasy Patreon Collection/Sideview Fantasy Patreon Collection/Environments/Modular-tileset/layers/modular-tileset.png" width="368" height="272"/>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="340" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="16">
+ <properties>
+  <property name="bird" value="assets/objects/bird.png"/>
+  <property name="bullet" value="assets/objects/bullet.png"/>
+  <property name="dragonBoss" value="assets/objects/dragon_boss.png"/>
+  <property name="explosion" value="assets/objects/explosions.png"/>
+  <property name="ghost" value="assets/objects/ghost.png"/>
+  <property name="lives" value="assets/objects/lives.png"/>
+  <property name="sky_bg" value="assets/ui/sky_bg.png"/>
+  <property name="spectra" value="assets/objects/spectra.png"/>
+  <property name="turret" value="assets/objects/turret.png"/>
+  <property name="playerBullet" value="assets/objects/player_bullet.png"/>
+ </properties>
+ <tileset firstgid="1" name="map1_tileset" tilewidth="16" tileheight="16" tilecount="391" columns="23">
+  <image source="assets/tilesets/map1_tileset.png" width="368" height="272"/>
  </tileset>
-   <objectgroup name="Object Layer 2" width="150" height="15">
-    <object name="Background" type="ScrollingBackground" x="0" y="0" width="1280" height="720">
-     <properties>
-      <property name="animSpeed" value="2"/>
-      <property name="numFrames" value="1"/>
-      <property name="textureID" value="sky_bg"/>
-     </properties>
-    </object>
-   </objectgroup>
- <layer id="1" name="Tile Layer 1" width="150" height="45">
+ <objectgroup id="3" name="Object Layer 2">
+  <object id="3" name="Background" type="ScrollingBackground" x="0" y="0" width="1280" height="720">
+   <properties>
+    <property name="animSpeed" value="2"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureID" value="sky_bg"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="1" name="Tile Layer 1" width="340" height="45">
   <properties>
-   <property name="collidable" type="int" value="0"/>
+   <property name="collidable" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2klrU1EchvEE2pW2Dh9BG6sLIbirSdSFn0DdCSVbK34HZ7u0K2ddWhScqi4VBWddiGun1oWUWFTqvLBP6Q0ewhWbmnP+956+P3gIoYv75vb2UEoLhfg8tx4gUXpvPUCipOdKfNBzJT7ouRIf9FyJD7+tB4iIiIiIiIiISOZtcBLphMGURERERGTxuOB00XiLxOOO013jLSIieVMu/P1vf+UkkXbV55GIiIiIiIiIzN8L6wERK1kPMDRpPSBSFapSLXmtOu+bxWx90XpBnLbRdtqRvKYVs616rrzYRUO0O3kdct43n6s9Zuv803nlx17aR/vpAB2kQ3SYjtCw2bIwdF75cYyO0wk6SafoNJ2hs3TObloQOq/8uESX6QpdpWs0RtfpBt20mxZEns6rl/SKXtMbekvjNEHv7Galukf36QE9pEf0mJ7QU3pmNy2I/zmv6oWw/1MyTV/oK32j7/SDftKvANdvx0f69I8+m63zL0/n1RK2LqUe6qVltJxW0MoMfo4patCHlhrJ12KWp9+vVrF1NfVRidZQP62ldRn8HN3FP/e3qzjXrDzd84XK03k1wNaNVKEq1WgTbaYtGf0c7v1tPleh7/nRlkYCXDOPPzvu5qzvd/d1G51X51saDXDNPJ1XTe7mrO9P2xd6862Wbge45s6Mf1/SuJuzvj9tX6c2zwAxv2qq
+   eJzt3TlvE0EchvG1RCpuWqggIVAgWSgN5ICCTwB0SBQWDSC+A/fRIKi4jw4q7qODKtwgcXwIjsQCxE0B78pesV7tOmY8u2PPPj/pkYODnBHW/Hcd4k0QlMtL1wsAAE+8db0AAPDEH9cLAABPME8BwA7mKQDYwTwFADuYpwBgB/MUAOxgngKAHcxTAGU10swW5imAstmaUbeYpwDQnegcN5qnq10tBAD63JSqBo15Wm3+GQDw/6ZSAgAAAAAAAAAAAAAAAAAAAJC/oykBgE9qBX4tZimAPB1Tx1MqQng9giLnKQDk6ZK6nFIRagHzFIA/7qn7KRWBeQqUy0Cl0bTrhXgmeq3PPC23QTU0w98ZLmIhKMR0LHRmJFHa52sB8xRBMKrG1HibJpytDnnYUnG9gv6yLVE1US1gnqJho9qkNjdvk+1s3sIfG5inRsJZWu8glNd2tSP4NzeTczRql6sFwjrmqZlonrbDPC233WqP2qv2qf3qgDqoDqnD6oirxSEXzFMzzFPM5IQ6qU6p0+qMOqvOqfPqgrroanHIRV7ztAzvgUzOy+Tvb2GeltsVdVVdU9fVDXVT3VK31R1119nqkAfOT81lzdPoY+ZpuU2qB+qheqQeqyfqqXqmnqsXzlaHPDBPzbWbp2mfR++ZzPGxP6pPHfQ5xzWgWMxTc/z/vh++qK/qm/qufqif6pf63eVjh++XCY+x0c95z6o0Cj/md/r6h3lqLtwrr3X7JnH/q6Bx/wD/tn1htp6nOWqumqfmqwVqoVpk4TmM5ml4fF1caVQPeB+Nj5in5t6p9+pDh/ejNy3VHlimBtWQWq6G1Qq10sL+WJU4R63H7odfmKfmovPQrPPT5P3oTWu0B9aqUTWmxtWEWqfWW9gf0R6LXutHr1vYe/7hOTXH+ak/4sdA28fD+B4LX+svqXDM9RXz1Bznp62yrt9d5HW8TcWPgbaPh2l7jGOun5in5jg/bZV1/e4ir+Pdjfj3M21+bzNrj7H3/MNzao7z01ZZ1+8u8jre3YjvBZv7gnlaHlyvzxznp36J7wWb+yLrsdh7+fsLTN70WQ==
   </data>
  </layer>
  <objectgroup id="2" name="Object Layer 1">
-  <object type="Turret" id="1" x="168" y="622" width="60" height="60">
+  <object id="1" type="Player" x="58.6667" y="284" width="64" height="64">
    <properties>
-    <property name="numFrames" type="int" value="1"/>
-    <property name="textureID" value="turret"/>
-   </properties>
-  </object>
-  <object type="FloatingEnemy" id="3" x="864" y="546" width="60" height="60">
-   <properties>
-    <property name="numFrames" type="int" value="1"/>
-    <property name="textureID" value="turret"/>
-   </properties>
-  </object>
-  <object type="Turret" id="4" x="1346" y="546" width="60" height="60">
-   <properties>
-    <property name="numFrames" type="int" value="1"/>
-    <property name="textureID" value="turret"/>
-   </properties>
-  </object>
-  <object type="Map1Boss" id="5" x="1672" y="308" width="60" height="60">
-   <properties>
-    <property name="numFrames" type="int" value="1"/>
-    <property name="textureID" value="turret"/>
-   </properties>
-  </object>
-  <object type="FlyingEnemy" id="2" x="344" y="176" width="60" height="60">
-   <properties>
-    <property name="numFrames" type="int" value="1"/>
-    <property name="textureID" value="turret"/>
-   </properties>
-  </object>
-  <object id="6" type="Player" x="30" y="319" width="32" height="32">
-   <properties>
-    <property name="numFrames" type="int" value="2"/>
+    <property name="numFrames" value="2"/>
     <property name="textureID" value="spectra"/>
-    <property name="scaleFactor" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="4" type="Turret" x="812" y="469.333" width="56" height="56">
+   <properties>
+    <property name="numFrames" value="1"/>
+    <property name="textureID" value="turret"/>
+   </properties>
+  </object>
+  <object id="5" type="FlyingEnemy" x="1342.67" y="320" width="64" height="64">
+   <properties>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="bird"/>
+    <property name="isTurnLeft" value="true"/>
+   </properties>
+  </object>
+  <object id="6" type="FloatingEnemy" x="1964" y="169.333" width="64" height="64">
+   <properties>
+    <property name="numFrames" value="6"/>
+    <property name="textureID" value="ghost"/>
+    <property name="isTurnLeft" value="true"/>
+    <property name="scaleFactor" value="2"/>
+   </properties>
+  </object>
+  <object id="7" type="Turret" x="2268" y="294.667" width="56" height="56">
+   <properties>
+    <property name="numFrames" value="1"/>
+    <property name="textureID" value="turret"/>
+   </properties>
+  </object>
+  <object id="8" type="Turret" x="2836" y="608" width="56" height="56">
+   <properties>
+    <property name="numFrames" value="1"/>
+    <property name="textureID" value="turret"/>
+   </properties>
+  </object>
+  <object id="9" type="FlyingEnemy" x="3194.67" y="340" width="64" height="64">
+   <properties>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="bird"/>
+    <property name="isTurnLeft" value="true"/>
+   </properties>
+  </object>
+  <object id="10" type="FloatingEnemy" x="3666.67" y="282.667" width="64" height="64">
+   <properties>
+    <property name="numFrames" value="6"/>
+    <property name="textureID" value="ghost"/>
+    <property name="isTurnLeft" value="true"/>
+    <property name="scaleFactor" value="2"/>
+   </properties>
+  </object>
+  <object id="11" type="FlyingEnemy" x="4205.33" y="166.667" width="64" height="64">
+   <properties>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="bird"/>
+    <property name="isTurnLeft" value="true"/>
+   </properties>
+  </object>
+  <object id="12" type="FlyingEnemy" x="5326.67" y="72" width="64" height="64">
+   <properties>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="bird"/>
+    <property name="isTurnLeft" value="true"/>
+   </properties>
+  </object>
+  <object id="13" type="FlyingEnemy" x="5337.33" y="556" width="64" height="64">
+   <properties>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="bird"/>
+    <property name="isTurnLeft" value="true"/>
+   </properties>
+  </object>
+  <object id="14" x="5340" y="336" type="FloatingEnemy">
+   <properties>
+    <property name="numFrames" value="6"/>
+    <property name="textureID" value="ghost"/>
+    <property name="isTurnLeft" value="true"/>
+    <property name="scaleFactor" value="2"/>
+   </properties>
+  </object>
+  <object id="15" type="Map1Boss" x="4805.33" y="269.333" width="288" height="128">
+   <properties>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="dragonBoss"/>
    </properties>
   </object>
  </objectgroup>
