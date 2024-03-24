@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ShooterObject.h"
+#include "SoundManager.h"
 
 ShooterObject::ShooterObject() : GameObject(),
                                  m_bulletFiringSpeed(0),
@@ -24,6 +25,10 @@ void ShooterObject::load(const LoaderParams* pParams) {
 }
 
 void ShooterObject::doDyingAnimation() {
+    if (!m_bPlayedDeathSound) {
+        SoundManager::Instance() ->playSound("explosion", 0);
+        m_bPlayedDeathSound = true;
+    }
     scroll(Game::Instance()->getScrollSpeed());
 
     m_currentFrame = int(((SDL_GetTicks() / (1000 / 3))) % m_numFrames);
