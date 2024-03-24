@@ -63,6 +63,7 @@ bool GameOverState::onExit() {
 }
 
 void GameOverState::s_gameOverToMain() {
+    SDL_Delay(1000);
     Game::Instance() -> getStateManager() ->changeState(new MainMenuState());
 }
 
