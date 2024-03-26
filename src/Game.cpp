@@ -69,6 +69,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     m_pGameStateManager->changeState(new MainMenuState());
 
     m_levelFiles.push_back("data/map1.tmx");
+    m_levelFiles.push_back("data/map2.tmx");
     m_currentLevel = 1;
 
     return true;

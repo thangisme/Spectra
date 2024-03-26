@@ -14,6 +14,7 @@
 #include "Enemies/FlyingEnemy.h"
 #include "Enemies/FloatingEnemy.h"
 #include "Enemies/Map1Boss.h"
+#include "Enemies/Map2Boss.h"
 #include "SoundManager.h"
 #include "GameState/WinState.h"
 #include "GameState/GuideScreen.h"
@@ -58,6 +59,7 @@ bool PlayState::onEnter() {
     GameObjectFactory::Instance()->registerType("FlyingEnemy", new FlyingEnemyCreator());
     GameObjectFactory::Instance()->registerType("FloatingEnemy", new FloatingEnemyCreator());
     GameObjectFactory::Instance()->registerType("Map1Boss", new Map1BossCreator());
+    GameObjectFactory::Instance()->registerType("Map2Boss", new Map2BossCreator());
     Game::Instance() ->setPlayerLives(3);
     LevelParser levelParser;
     pLevel = levelParser.parseLevel(Game::Instance() -> getLevelFiles()[Game::Instance() -> getCurrentLevel() - 1].c_str());

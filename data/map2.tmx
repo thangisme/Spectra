@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="160" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="15">
+ <properties>
+  <property name="bg" value="assets/ui/map2_bg.png"/>
+  <property name="bird" value="assets/objects/bird.png"/>
+  <property name="bullet" value="assets/objects/bullet.png"/>
+  <property name="explosion" value="assets/objects/explosions.png"/>
+  <property name="ghost" value="assets/objects/ghost.png"/>
+  <property name="lives" value="assets/objects/lives.png"/>
+  <property name="map2boss" value="assets/objects/map2boss.png"/>
+  <property name="map2boss_bullet" value="assets/objects/map2boss_bullet.png"/>
+  <property name="playerBullet" value="assets/objects/player_bullet.png"/>
+  <property name="spectra" value="assets/objects/spectra.png"/>
+  <property name="turret" value="assets/objects/turret.png"/>
+ </properties>
+ <tileset firstgid="1" name="Tileset" tilewidth="16" tileheight="16" tilecount="128" columns="16">
+  <image source="assets/tilesets/map2_tileset.png" width="256" height="128"/>
+ </tileset>
+ <tileset firstgid="129" name="Props" tilewidth="16" tileheight="16" tilecount="160" columns="16">
+  <image source="assets/tilesets/map2_props.png" width="256" height="160"/>
+ </tileset>
+ <objectgroup id="3" name="Object Layer 2">
+  <object id="3" name="Background" type="ScrollingBackground" x="0" y="0" width="1280" height="720">
+   <properties>
+    <property name="animSpeed" value="2"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureID" value="bg"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="1" name="Tile Layer 1" width="160" height="45">
+  <properties>
+   <property name="collidable" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt3ddqFGEYh/HZWEgxhVgwiUk8tJx5pPEGNIKCFxDP9A70xCPbBdgIIh7EcgE27IINu2DDLtiwCzbs+nywC2vY2Zndmfk+mO//wI81ZjfzzubVoLCzQZBtCzAvIz0Zz57XtrkewHIzgsr7MxDy+3HNtnkSOcq3/Zsb1LZXM2N+TvtXX9q/dGj/6kv7F//vvGo/o7V/9aX9i/45G8d8myeRo7R/yS3EoM2TyFG+7Z/5P5jSvpSrtlujDZbdLrI7fu7ybf/CMntZ2kXtlr20f8pFw8Xb0v5tL1Iq61ZXoZRSSimllPIn/VtAuU67p5RSSimllFJKKaWUUn7UEEIpG3WGUEoppZRSSmXfGqzFOqzHBrfjKM/aiE3YjC3Y6nYc5Vkj2Ild2I09bsdRnrUX+7AfB3DQ7ThedgiHcQRHcQzHcQInHc5lo1M4jTM4i3Nux/Gy87iAi7iEy7iCq7jmcC4bXccN3MQt3HY7jpfdwV3cw308wEM8wmOHc9noCZ7iGZ7jhdtxvOwlXuE13uAt3uE9Pjicy0Yf8Qmf8QVf3Y7jZd/wHT/wE7/wG3/w1+FcNmooBMEYjMU4jC+kfwzzGsTlWJH+l7ZWlq+jbOQ5b0IzWjABrWhDewbfDxs1ognNETo5v4mYhMmYUoh+TFzlr79eiVUpft1WtKEdHRU+NvdZOkoa51HrY4OIz+/AVJ7zLnSjB9PQiz70F78fwyk9dza0mHNCF7pzqhd96Mf0Ch+7ns9n5v2Dyt8bppbrgQ/EvN8QFmNJ8dfGshqOU82slGet5xrpcWewwfYsSY9n3r8g6trgcb531e4zFPy/d+Z2TgrHTHrt/CxFzZbkz0O9j01yzKTPd9ixzfsXhF0bXCRr5lrf/wB+GA8W
+  </data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="1" type="Player" x="44" y="266.667" width="64" height="64">
+   <properties>
+    <property name="numFrames" value="2"/>
+    <property name="textureID" value="spectra"/>
+   </properties>
+  </object>
+  <object id="3" type="FlyingEnemy" x="758.667" y="249.333" width="64" height="64">
+   <properties>
+    <property name="isFlipVertical" value="true"/>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="bird"/>
+   </properties>
+  </object>
+  <object id="4" type="FlyingEnemy" x="1388" y="153.333" width="64" height="64">
+   <properties>
+    <property name="isFlipVertical" value="true"/>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="bird"/>
+   </properties>
+  </object>
+  <object id="6" type="FlyingEnemy" x="2072" y="296" width="64" height="64">
+   <properties>
+    <property name="isFlipVertical" value="true"/>
+    <property name="numFrames" value="7"/>
+    <property name="textureID" value="bird"/>
+   </properties>
+  </object>
+  <object id="7" type="Turret" x="1141.33" y="357.334" width="56" height="56">
+   <properties>
+    <property name="numFrames" value="1"/>
+    <property name="textureID" value="turret"/>
+   </properties>
+  </object>
+  <object id="9" type="FloatingEnemy" x="846.667" y="124" width="64" height="64">
+   <properties>
+    <property name="isFlipVertical" value="true"/>
+    <property name="numFrames" value="2"/>
+    <property name="scaleFactor" value="2"/>
+    <property name="textureID" value="ghost"/>
+   </properties>
+  </object>
+  <object id="12" type="FloatingEnemy" x="1477.33" y="296" width="64" height="64">
+   <properties>
+    <property name="isFlipVertical" value="true"/>
+    <property name="numFrames" value="2"/>
+    <property name="scaleFactor" value="2"/>
+    <property name="textureID" value="ghost"/>
+   </properties>
+  </object>
+  <object id="13" type="FloatingEnemy" x="2128" y="96" width="64" height="64">
+   <properties>
+    <property name="isFlipVertical" value="true"/>
+    <property name="numFrames" value="2"/>
+    <property name="scaleFactor" value="2"/>
+    <property name="textureID" value="ghost"/>
+   </properties>
+  </object>
+  <object id="14" type="Map2Boss" x="2345.33" y="324" width="100" height="100">
+   <properties>
+    <property name="isFlipVertical" value="true"/>
+    <property name="numFrames" value="9"/>
+    <property name="textureID" value="map2boss"/>
+    <property name="scaleFactor" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

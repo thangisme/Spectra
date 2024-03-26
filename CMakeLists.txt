@@ -77,6 +77,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/GameState/LevelCompletedState.cpp
         include/GameState/GuideScreen.h
         src/GameState/GuideScreen.cpp
+        include/Enemies/Map2Boss.h
+        src/Enemies/Map2Boss.cpp
 
 )
 
