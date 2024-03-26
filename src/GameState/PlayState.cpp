@@ -16,7 +16,9 @@
 #include "Enemies/Map1Boss.h"
 #include "SoundManager.h"
 #include "GameState/WinState.h"
+#include "GameState/GuideScreen.h"
 #include <iostream>
+#include <fstream>
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -43,6 +45,13 @@ void PlayState::render() {
 }
 
 bool PlayState::onEnter() {
+    std::ifstream f(".played");
+    if (!f.good()){
+        Game::Instance() -> getStateManager() ->changeState(new GuideScreen());
+        std::ofstream nf(".played");
+        nf.close();
+    }
+    f.close();
 
     GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
     GameObjectFactory::Instance()->registerType("Turret", new TurretCreator());

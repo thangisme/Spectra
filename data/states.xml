@@ -16,6 +16,20 @@
         </OBJECTS>
     </MENU>
 
+    <GUIDE>
+        <TEXTURES>
+            <texture filename="assets/ui/sky_bg.png" ID="background"/>
+            <texture filename="assets/ui/playBtn.png" ID="playBtn"/>
+            <texture filename="assets/ui/guide.png" ID="guideImg"/>
+        </TEXTURES>
+
+        <OBJECTS>
+            <object type="ScrollingBackground" x="0" y="0" width="1280" height="720" textureID="background" numFrames="0" animSpeed="2"/>
+            <object type="AnimatedGraphic" x="220" y="50" width="841" height="576" textureID="guideImg" numFrames="1" animSpeed="2"/>
+            <object type="MenuButton" x="496" y="570" width="288" height="96" textureID="playBtn" numFrames="0" callbackID="1"/>
+        </OBJECTS>
+    </GUIDE>
+
     <PAUSE>
         <TEXTURES>
             <texture filename="assets/ui/sky_bg.png" ID="background"/>

@@ -75,6 +75,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/GameState/WinState.cpp
         include/GameState/LevelCompletedState.h
         src/GameState/LevelCompletedState.cpp
+        include/GameState/GuideScreen.h
+        src/GameState/GuideScreen.cpp
 
 )
 
