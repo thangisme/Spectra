@@ -12,6 +12,7 @@ public:
     virtual void update();
     virtual void clean();
     virtual void load(const LoaderParams* pParams);
+    virtual void collision();
 
     virtual std::string type() { return "Player";}
     Vector2D getVelocity() const { return m_velocity; }

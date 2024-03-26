@@ -125,3 +125,15 @@ void Player::handleAnimation() {
 
     m_currentFrame = int(((SDL_GetTicks() / (100)) % m_numFrames));
 }
+
+void Player::collision() {
+    if (!m_invulnerable && !Game::Instance() -> getLevelComplete()) {
+        m_textureID = "spectra";
+        m_currentFrame = 0;
+        m_currentRow = 7;
+        m_numFrames = 8;
+        m_width = 64;
+        m_height = 64;
+        m_bDying = true;
+    }
+}
