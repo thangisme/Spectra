@@ -1,7 +1,7 @@
 #include "Enemies/Map1Boss.h"
 #include "BulletHandler.h"
 
-Map1Boss::Map1Boss() : m_dyingTime(5000), m_health(100), m_bulletFiringSpeed(70), m_moveSpeed(1), m_movingLeft(true) {}
+Map1Boss::Map1Boss() : m_dyingTime(5000), m_health(100), m_bulletFiringSpeed(70), m_moveSpeed(1) {}
 
 void Map1Boss::load(const LoaderParams *pParams) {
     ShooterObject::load(pParams);
@@ -33,13 +33,13 @@ void Map1Boss::collision() {
 void Map1Boss::update() {
     if (!m_bDying) {
         m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);
-        if (m_position.getX() > 0 && m_movingLeft) {
+        if (m_position.getX() > 0 && !m_bFlipVertical) {
             scroll(Game::Instance()->getScrollSpeed());
         } else if (m_position.getX() + m_width * m_scaleFactor >= Game::Instance()->getGameWidth()) {
             scroll(Game::Instance()->getScrollSpeed());
-            m_movingLeft = true;
+            m_bFlipVertical = false;
         } else {
-            m_movingLeft = false;
+            m_bFlipVertical = true;
             scroll(-Game::Instance()->getScrollSpeed());
         }
 
@@ -50,7 +50,7 @@ void Map1Boss::update() {
         }
 
         if (m_bulletCounter == m_bulletFiringSpeed) {
-            Vector2D headingDirections[] = {Vector2D(0, 3), Vector2D(3, 0), Vector2D(0, -3),
+            Vector2D headingDirections[] = {Vector2D(-3, 1), Vector2D(0, 3), Vector2D(3, 0), Vector2D(0, -3),
                                             Vector2D(3, 3), Vector2D(-3, 3), Vector2D(3, -3), Vector2D(-3, -3)};
             for (Vector2D heading: headingDirections) {
                 BulletHandler::Instance()->addEnemyBullet(m_position.getX() + m_width / 2,

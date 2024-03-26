@@ -21,7 +21,7 @@ void ShooterObject::load(const LoaderParams* pParams) {
     m_textureID = pParams->getTextureID();
     m_numFrames = pParams->getNumFrames();
     m_scaleFactor = pParams ->getScaleFactor();
-    m_bTurnLeft = pParams ->isTurnLeft();
+    m_bFlipVertical = pParams ->isTurnLeft();
 }
 
 void ShooterObject::doDyingAnimation() {
@@ -43,7 +43,8 @@ void ShooterObject::doDyingAnimation() {
 void ShooterObject::draw() {
     if (!m_bDead) {
         TextureManager::Instance()->drawFrame(m_textureID, m_position.getX(), m_position.getY(), m_width, m_height,
-                                              m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), 0, m_alpha, m_scaleFactor, isTurnLeft() ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+                                              m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), 0, m_alpha, m_scaleFactor,
+                                              isFlipVertical() ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 }
 

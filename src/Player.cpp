@@ -64,10 +64,10 @@ void Player::handleInput() {
     }
 
     if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_LEFT) && m_position.getX() > 0) {
-        setTurnLeft(true);
+        setFlipVertical(true);
         m_velocity.setX(-m_moveSpeed);
     } else if (InputHandler::Instance() ->isKeyDown(SDL_SCANCODE_RIGHT) && m_position.getX() + m_width < Game::Instance() -> getGameWidth()) {
-        setTurnLeft(false);
+        setFlipVertical(false);
         m_velocity.setX(+m_moveSpeed);
     }
 
@@ -75,7 +75,7 @@ void Player::handleInput() {
         if (m_bulletCounter == m_bulletFiringSpeed) {
             Vector2D bulletHeading(12, 0);
             int tempX = m_position.getX() + m_width * m_scaleFactor / 2;
-            if (isTurnLeft()) {
+            if (isFlipVertical()) {
                 bulletHeading.setX(-12);
                 tempX = m_position.getX() - m_width * m_scaleFactor / 2;
             }

@@ -39,9 +39,9 @@ public:
 
     bool dying() { return m_bDying; }
 
-    bool isTurnLeft() { return m_bTurnLeft; }
+    bool isFlipVertical() { return m_bFlipVertical; }
 
-    void setTurnLeft(bool turnLeft) { m_bTurnLeft = turnLeft; }
+    void setFlipVertical(bool flip) { m_bFlipVertical = flip; }
 
     void setUpdating(bool updating) { m_bUpdating = updating; }
 
@@ -56,7 +56,7 @@ protected:
                    m_bUpdating(false),
                    m_bDead(false),
                    m_bDying(false),
-                   m_bTurnLeft(false),
+                   m_bFlipVertical(false),
                    m_angle(0),
                    m_alpha(255),
                    m_scaleFactor(1){}
@@ -78,7 +78,7 @@ protected:
     bool m_bDead;
     bool m_bDying;
 
-    bool m_bTurnLeft;
+    bool m_bFlipVertical;
 
     double m_angle;
 

@@ -49,14 +49,14 @@
    <properties>
     <property name="numFrames" value="7"/>
     <property name="textureID" value="bird"/>
-    <property name="isTurnLeft" value="true"/>
+    <property name="isFlipVertical" value="true"/>
    </properties>
   </object>
   <object id="6" type="FloatingEnemy" x="1964" y="169.333" width="64" height="64">
    <properties>
     <property name="numFrames" value="6"/>
     <property name="textureID" value="ghost"/>
-    <property name="isTurnLeft" value="true"/>
+    <property name="isFlipVertical" value="true"/>
     <property name="scaleFactor" value="2"/>
    </properties>
   </object>
@@ -76,14 +76,14 @@
    <properties>
     <property name="numFrames" value="7"/>
     <property name="textureID" value="bird"/>
-    <property name="isTurnLeft" value="true"/>
+    <property name="isFlipVertical" value="true"/>
    </properties>
   </object>
   <object id="10" type="FloatingEnemy" x="3666.67" y="282.667" width="64" height="64">
    <properties>
     <property name="numFrames" value="6"/>
     <property name="textureID" value="ghost"/>
-    <property name="isTurnLeft" value="true"/>
+    <property name="isFlipVertical" value="true"/>
     <property name="scaleFactor" value="2"/>
    </properties>
   </object>
@@ -91,28 +91,28 @@
    <properties>
     <property name="numFrames" value="7"/>
     <property name="textureID" value="bird"/>
-    <property name="isTurnLeft" value="true"/>
+    <property name="isFlipVertical" value="true"/>
    </properties>
   </object>
   <object id="12" type="FlyingEnemy" x="5326.67" y="72" width="64" height="64">
    <properties>
     <property name="numFrames" value="7"/>
     <property name="textureID" value="bird"/>
-    <property name="isTurnLeft" value="true"/>
+    <property name="isFlipVertical" value="true"/>
    </properties>
   </object>
   <object id="13" type="FlyingEnemy" x="5337.33" y="556" width="64" height="64">
    <properties>
     <property name="numFrames" value="7"/>
     <property name="textureID" value="bird"/>
-    <property name="isTurnLeft" value="true"/>
+    <property name="isFlipVertical" value="true"/>
    </properties>
   </object>
   <object id="14" x="5340" y="336" type="FloatingEnemy">
    <properties>
     <property name="numFrames" value="6"/>
     <property name="textureID" value="ghost"/>
-    <property name="isTurnLeft" value="true"/>
+    <property name="isFlipVertical" value="true"/>
     <property name="scaleFactor" value="2"/>
    </properties>
   </object>
