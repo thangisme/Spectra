@@ -123,15 +123,5 @@ void Player::handleAnimation() {
         m_invulnerableCounter++;
     }
 
-    if (!m_bDead) {
-        if (m_velocity.getX() < 0) {
-            m_angle = -10.0;
-        } else if (m_velocity.getX() > 0) {
-            m_angle = 10.0;
-        } else {
-            m_angle = 0.0;
-        }
-    }
-
     m_currentFrame = int(((SDL_GetTicks() / (100)) % m_numFrames));
 }
