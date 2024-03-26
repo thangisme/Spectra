@@ -140,7 +140,7 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
         if (e->Value() == std::string("object")) {
             int x, y, width, height, numFrames, callbackID = 0, animSpeed = 1, scaleFactor = 1;
             std::string textureID;
-            bool isTurnLeft = false;
+            bool isFlipVertical = false;
 
             e->QueryIntAttribute("x", &x);
             e->QueryIntAttribute("y", &y);
@@ -166,14 +166,14 @@ void LevelParser::parseObjectLayer(tinyxml2::XMLElement *pObjectElement, std::ve
                             } else if (property->Attribute("name","scaleFactor")) {
                                 property->QueryIntAttribute("value", &scaleFactor);
                             } else if (property ->Attribute("name", "isFlipVertical")) {
-                                property->QueryBoolAttribute("value", &isTurnLeft);
+                                property->QueryBoolAttribute("value", &isFlipVertical);
                             }
                         }
                     }
                 }
             }
 
-            pGameObject ->load(new LoaderParams(x,y, width, height, textureID, numFrames, callbackID, animSpeed, scaleFactor, isTurnLeft));
+            pGameObject ->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed, scaleFactor, isFlipVertical));
             if (pGameObject->type() == "Player") {
                 pLevel ->setPlayer(dynamic_cast<Player*> (pGameObject));
             }
