@@ -1,3 +1,8 @@
+# Original repo:
+
+https://github.com/tcbrindle/sdl2-cmake-scripts 
+
+---
 
 This repository contains CMake scripts for finding the `SDL2`, `SDL2_image` and
 `SDL2_ttf` libraries and headers.
