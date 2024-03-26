@@ -12,6 +12,7 @@
 
 
 ## Gameplay demo
+You can view the demo video on [Youtube](https://www.youtube.com/watch?v=O_9oMhhOk9w)
 
 ### Screenshot
 | ![splashscreen](assets/screenshots/splash_screen.png) | ![guidescreen](assets/screenshots/guide_screen.png) | ![winscreen](assets/screenshots/win_screen.png) |
