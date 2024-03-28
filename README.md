@@ -41,6 +41,9 @@ The only exception is the `PlayState` class which call the `LevelParser` class i
 
 Due to the space between frame in some object sprite sheets, the collision detection is not pixel-perfect. Instead, the `CollisionManager` class check for outer edges of the object minus a fixed offset to determine the collision.
 
+## Download
+Windows users can download the latest release [here](https://github.com/thangisme/Spectra/releases).
+
 ## Build and Run
 ### Prerequisites
 
