@@ -38,7 +38,7 @@ void ScrollingBackground::update() {
         // make first rect smaller
         m_srcRect1.x += m_scrollSpeed;
         m_srcRect1.w -= m_scrollSpeed;
-        m_destRect1.w -+ m_scrollSpeed;
+        m_destRect1.w -= m_scrollSpeed;
 
         // make second rect bigger
         m_destRect2.x -= m_scrollSpeed;
