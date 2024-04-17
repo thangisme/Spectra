@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
+
 project(Spectra)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -85,6 +86,10 @@ add_executable(${PROJECT_NAME} src/main.cpp
 # --- SDL2 SETUP ---
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
+set(SDL2_PATH "SDL2/x86_64-w64-mingw32")
+set(SDL2_IMAGE_PATH "SDL2/x86_64-w64-mingw32")
+set(SDL2_MIXER_PATH "SDL2/x86_64-w64-mingw32")
+
 #Locate ZLib library
 find_package(ZLIB REQUIRED)
 
@@ -93,15 +98,15 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 
-
 include_directories(
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIRS}
         ${SDL2_MIXER_INCLUDE_DIRS}
+        ${ZLIB_INCLUDE_DIRS}
         include
 )
 
 file(COPY ${CMAKE_SOURCE_DIR}/data DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
 
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_MIXER_LIBRARIES} ZLIB::ZLIB)
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} -static ${SDL2_IMAGE_LIBRARIES} ${SDL2_MIXER_LIBRARIES} ${ZLIB_LIBRARIES})

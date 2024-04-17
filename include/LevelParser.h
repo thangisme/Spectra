@@ -3,7 +3,6 @@
 
 #include "Libraries/tinyxml2.h"
 #include "Libraries/base64.h"
-#include "zlib.h"
 #include <vector>
 
 class Level;
