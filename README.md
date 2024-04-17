@@ -70,3 +70,11 @@ If the build process succeed, you can find the executable file in the `build` di
 ```sh
 ./build/Spectra
 ```
+
+## Cross compiling to Windows
+```
+mkdir build-windows
+cd build-windows
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../windows-toolchain.cmake
+make
+```
